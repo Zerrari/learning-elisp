@@ -1,0 +1,120 @@
+* Day1
+** symbol
+*** it can be defined as a function and a variable which returns a value
+*** when symbol is in a pair of parenthese and is the first position.It stands for a function.
+**** 
+#+begin_src emacs-lisp
+(+ 1 2)
+#+end_src
+
+#+RESULTS:
+: 3
+
+*** when symbol is not in a pair of parenthese it stands for a variable.
+**** 
+#+begin_src emacs-lisp
+fill-column    
+#+end_src
+
+#+RESULTS:
+: 70
+
+*** a quotation before a pair of parenthese return what is written
+#+begin_src emacs-lisp
+'(lion tigger)
+#+end_src
+
+    #+RESULTS:
+    | lion | tigger |
+
+#+begin_src emacs-lisp
+'(lion "a tree")
+#+end_src
+
+    #+RESULTS:
+    | lion | a tree |
+
+*** atoms which in a pair of parenthese are separated by a white space
+** evaluate
+*** how
+move the cursor after the parenthese,and type *C-x C-e* to evaluate the expression
+
+** function
+*** something basic
+**** a funtion returns two things
++ return a value
++ side effects(/print something on the screen/)
+*** set and setq
+**** set
+     #+begin_src emacs-lisp
+     (set 'flowers '(rose))
+     flowers
+     #+end_src
+
+     #+RESULTS:
+     | rose |
+
+**** setq
+***** an easy way to use set
+***** 
+      #+begin_src emacs-lisp 
+      (setq animals '(lion tigger))
+      animals
+      #+end_src
+
+      #+RESULTS:
+      | lion | tigger |
+
+**** something important
+If you don't add *'* before symbol,it will be explanined as a function.
+For example, if you don't add *'* before (lion tigger),the lisp interpretor will think lion is a function.
+So it will return a error message.
+
+*** buffer 
+**** buffer-name and buffer-file-name
+***** buffer-name
+It returns the current buffer name
+      #+begin_src emacs-lisp
+      (buffer-name)
+      #+end_src
+
+      #+RESULTS:
+      : elisp.org
+
+***** buffer-file-name
+It returns a full path which the file belongs to.
+      #+begin_src emacs-lisp
+      (buffer-file-name)
+      #+end_src
+
+      #+RESULTS:
+      : /home/zerrari/notes/elisp/elisp.org
+
+**** current-buffer
+It returns the name of current buffer.
+#+begin_src emacs-lisp
+(current-buffer)
+#+end_src
+
+#+RESULTS:
+: #<buffer elisp.org>
+
+**** other-buffer
+It returns the buffer which you visited.
+#+begin_src emacs-lisp
+(other-buffer)
+#+end_src
+
+#+RESULTS:
+: #<buffer *scratch*>
+
+**** switch-to-buffer
+     #+begin_src emacs-lisp
+     (switch-to-buffer (other-buffer))
+     #+end_src
+
+     #+RESULTS:
+     : #<buffer *scratch*>
+
+
+
