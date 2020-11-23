@@ -118,3 +118,120 @@ It returns the buffer which you visited.
 
 
 
+* Day2
+** function
+*** defun 
+**** template
+(defun fun-name (arguments)
+     "optional document"
+     (optional interactive)
+     (body))
+***** example
+#+begin_src emacs-lisp
+(defun add (x y)
+     "add two numbers"
+     (+ x y))
+(add 3 4) 
+#+end_src
+
+#+RESULTS:
+: 7
+
+**** interactive(/need input in a minibuffer/)
+***** example
+#+begin_src emacs-lisp
+(defun add (x)
+     (interactive "p")  
+     (message "The result is %d" (+ x 3)))
+#+end_src
+
+#+RESULTS:
+: add
+
+**** invoke an interactive function by typing *C-u argument M-x fun-name*
+**** *p* stands for prefix which means you should type before invoke a function
+*** let
+**** template
+(let varlist body)
+#+begin_src emacs-lisp
+(let ((variable value1)
+      (variable value2))
+      body)
+#+end_src
+#+begin_src emacs-lisp
+(let ((one "apple")
+      (two "banana"))
+      (message "the fruit is %s" one))
+#+end_src
+
+#+RESULTS:
+: the fruit is apple
+
+**** something important
+unintialized variables will be bond to *nil*
+#+begin_src emacs-lisp
+(let ((one)
+      (two "banana"))
+      (message "the fruit is %s" one))
+#+end_src
+
+#+RESULTS:
+: the fruit is nil
+
+*** if
+**** example
+#+begin_src emacs-lisp
+(if (> 5 4)
+     (message "yes")
+     (message "no"))
+#+end_src
+
+#+RESULTS:
+: yes
+**** truth and falsehood
++ anything except nil represents true
++ the *empty* list is falsehood
+
+*** save excurison
+save the positon of cursor(after evaluating the function,it return the initial location)
+**** point and mark
+***** point
+Point is the current position of the cursor(integer)
+***** mark
+Mark is another positon of current buffer.
+****** mark set
+Its value can be set.
+type *C-spc* to set mark(it will send a message in minibuffer)
+****** mark ring
+If you set several marks,it will be recorded in a mark ring.
+type *C-u C-spc* to jump to the mark you saved
+***** region
+The part between point and mark is called a region.
+**** template
+(save-excurison 
+  body...)
+
+*** beginning of buffer
+**** push-mark
+the function stores the current positon of the cursor in mark ring
+#+begin_src emacs-lisp
+(defun simple-bob
+ (interactive)
+ (push-mark)
+ (goto-char (point-min)))
+#+end_src
+
+#+RESULTS:
+: simple-bob
+
+*** mark-whole-buffer
+(defun z-mark-whole-buffer()
+  (interactive)
+  (progn
+    (goto-char (point-max))
+    (set-mark (point))
+    (goto-char (point-min))))
+(z-mark-whole-buffer)
+
+*** append-to-buffer
+insert-buffer-substring
