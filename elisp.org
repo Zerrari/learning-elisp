@@ -235,3 +235,157 @@ the function stores the current positon of the cursor in mark ring
 
 *** append-to-buffer
 insert-buffer-substring
+
+
+* Day3
+** narrowing and widening
+with narrowing, the rest of buffer is invisible
+*** key binding
+*C-x n n* for /narrow-to-rigion/
+*C-x n w* for /widen/
+** save-restriction
+*** use save-restriction and save-excurison
+#+begin_src emacs-lisp
+(save-excurison
+  (save-restriction 
+     body))
+#+end_src
+
+#+begin_src emacs-lisp
+(save-restriction 
+  (widen)
+  (save-excurison
+  body))
+#+end_src
+
+** what-lines
+*** 
+#+begin_src emacs-lisp
+(defun simple-whatline()
+  (interactive)
+  (save-restriction
+    (widen)
+    (save-excursion
+      (let ((lines))
+	(setq  lines (count-lines 1 (point)))
+	(message "The line number is %d" lines)))))
+#+end_src
+
+#+RESULTS:
+: simple-whatline
+
+** more about interactive
+Sepreate string with *\n*
+*** input many arguments
++ *"s"* string
++ *"n"* number
+#+begin_src emacs-lisp
+(defun hello(name age country)
+  (interactive "sinput your name: \nnage: \nscountry: ")
+  (message "name:%s age:%d country:%s" name age country))
+#+end_src
+
+#+RESULTS:
+: hello
+
+*** "r" stands for a region 
+#+begin_src emacs-lisp
+(defun hello1 (start end)
+  (interactive "r")
+  (message "start:%d end:%d" start end))
+#+end_src
+
+#+RESULTS:
+: hello1
+
+*** "p" and "P"
+invoke a function by typing *C-u prefix-argument M-x fun-name*
+**** "p" prefix argument convert to a number
+**** "P" prefix argument is a raw type
+#+begin_src emacs-lisp
+(defun hello2 (num)
+  (interactive "p")
+  (message "%d" num))
+#+end_src
+
+#+RESULTS:
+: hello2
+
+** car,cdr and cons
++ cons to construct lists
++ car and cdr to take apart lists
+
+*** car 
+the car of the list is the first item
+#+begin_src emacs-lisp
+(car '(tiger lion))
+#+end_src
+
+#+RESULTS:
+: tiger
+
+*** cdr 
+returns the rest of the list
+#+begin_src emacs-lisp
+(cdr '(tiger lion))
+(cdr '(tiger lion cat))
+#+end_src
+
+#+RESULTS:
+| lion | cat |
+
+*** cons
+#+begin_src emacs-lisp
+(cons 'tiger '(lion cat))
+#+end_src
+
+#+RESULTS:
+| tiger | lion | cat |
+
+*** nthcdr
+use cdr repeatedly
+#+begin_src emacs-lisp
+(nthcdr 1 '(tiger lion cat))
+#+end_src
+
+#+RESULTS:
+| lion | cat |
+
+#+begin_src emacs-lisp
+(nthcdr 3 '(tiger lion cat))
+#+end_src
+
+#+RESULTS: nil
+
+*** nth
+use car repeatedly
+#+begin_src emacs-lisp
+(nth 1 '(lion tiger cat))
+#+end_src
+
+#+RESULTS:
+: tiger
+
+*** setcar
+set the *car* a new value
+#+begin_src emacs-lisp
+(setq animals (list 'tiger 'cat 'lion))
+(setcar animals 'pig)
+animals
+#+end_src
+
+#+RESULTS:
+| pig | cat | lion |
+
+*** setcdr
+set the *cdr* a new value
+#+begin_src emacs-lisp
+(setq animals (list 'tiger 'cat 'lion))
+(setcdr animals (list 'pig 'dog))
+animals
+#+end_src
+
+#+RESULTS:
+| tiger | pig | dog |
+
+
