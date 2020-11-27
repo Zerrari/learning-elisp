@@ -24,15 +24,14 @@ fill-column
 '(lion tigger)
 #+end_src
 
-    #+RESULTS:
-    | lion | tigger |
+#+RESULTS:
+| lion | tigger |
 
 #+begin_src emacs-lisp
 '(lion "a tree")
 #+end_src
-
-    #+RESULTS:
-    | lion | a tree |
+#+RESULTS:
+| lion | a tree |
 
 *** atoms which in a pair of parenthese are separated by a white space
 ** evaluate
@@ -46,13 +45,13 @@ move the cursor after the parenthese,and type *C-x C-e* to evaluate the expressi
 + side effects(/print something on the screen/)
 *** set and setq
 **** set
-     #+begin_src emacs-lisp
-     (set 'flowers '(rose))
-     flowers
-     #+end_src
+#+begin_src emacs-lisp
+(set 'flowers '(rose))
+flowers
+#+end_src
 
-     #+RESULTS:
-     | rose |
+#+RESULTS:
+| rose |
 
 **** setq
 ***** an easy way to use set
@@ -74,21 +73,21 @@ So it will return a error message.
 **** buffer-name and buffer-file-name
 ***** buffer-name
 It returns the current buffer name
-      #+begin_src emacs-lisp
-      (buffer-name)
-      #+end_src
+#+begin_src emacs-lisp
+(buffer-name)
+#+end_src
 
-      #+RESULTS:
-      : elisp.org
+#+RESULTS:
+: elisp.org
 
 ***** buffer-file-name
 It returns a full path which the file belongs to.
-      #+begin_src emacs-lisp
-      (buffer-file-name)
-      #+end_src
+#+begin_src emacs-lisp
+(buffer-file-name)
+#+end_src
 
-      #+RESULTS:
-      : /home/zerrari/notes/elisp/elisp.org
+#+RESULTS:
+: /home/zerrari/notes/elisp/elisp.org
 
 **** current-buffer
 It returns the name of current buffer.
@@ -109,12 +108,12 @@ It returns the buffer which you visited.
 : #<buffer *scratch*>
 
 **** switch-to-buffer
-     #+begin_src emacs-lisp
-     (switch-to-buffer (other-buffer))
-     #+end_src
+#+begin_src emacs-lisp
+(switch-to-buffer (other-buffer))
+#+end_src
 
-     #+RESULTS:
-     : #<buffer *scratch*>
+#+RESULTS:
+: #<buffer *scratch*>
 
 
 
@@ -122,20 +121,12 @@ It returns the buffer which you visited.
 ** function
 *** defun 
 **** template
+#+begin_src emacs-lisp
 (defun fun-name (arguments)
      "optional document"
      (optional interactive)
      (body))
-***** example
-#+begin_src emacs-lisp
-(defun add (x y)
-     "add two numbers"
-     (+ x y))
-(add 3 4) 
 #+end_src
-
-#+RESULTS:
-: 7
 
 **** interactive(/need input in a minibuffer/)
 ***** example
@@ -152,12 +143,16 @@ It returns the buffer which you visited.
 **** *p* stands for prefix which means you should type before invoke a function
 *** let
 **** template
+#+begin_src emacs-lisp
 (let varlist body)
+#+end_src
+
 #+begin_src emacs-lisp
 (let ((variable value1)
       (variable value2))
       body)
 #+end_src
+
 #+begin_src emacs-lisp
 (let ((one "apple")
       (two "banana"))
@@ -208,8 +203,10 @@ type *C-u C-spc* to jump to the mark you saved
 ***** region
 The part between point and mark is called a region.
 **** template
+#+begin_src emacs-lisp
 (save-excurison 
   body...)
+#+end_src
 
 *** beginning of buffer
 **** push-mark
@@ -225,6 +222,7 @@ the function stores the current positon of the cursor in mark ring
 : simple-bob
 
 *** mark-whole-buffer
+#+begin_src emacs-lisp
 (defun z-mark-whole-buffer()
   (interactive)
   (progn
@@ -232,6 +230,7 @@ the function stores the current positon of the cursor in mark ring
     (set-mark (point))
     (goto-char (point-min))))
 (z-mark-whole-buffer)
+#+end_src
 
 *** append-to-buffer
 insert-buffer-substring
