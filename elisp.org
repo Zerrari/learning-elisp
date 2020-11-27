@@ -389,3 +389,69 @@ animals
 | tiger | pig | dog |
 
 
+
+* Day4
+** defvar
++ it only sets the value of the variable when it doesn't exits
++ if the value has exited,defvar will not overrider the initial value
++ defvar has document string
+#+begin_src emacs-lisp
+(defvar num 3)
+num
+#+end_src
+
+#+RESULTS:
+: 3
+
+** loops and recursion
+*** while 
+#+begin_src emacs-lisp
+(setq animals '(pig cat tiger dog))
+(defun print-list-element (list)
+  (while list
+   (print (car list))
+   (setq list (cdr list))))
+(print-list-element animals)nil
+#+end_src
+
+*** increment loop
+use counter to stop a loop
+#+begin_src emacs-lisp
+(setq count 1)
+(defun counter-stop (num)
+  (while (< count num))
+   body
+   (setq count (+ 1 count))))
+  
+#+end_src
+
+#+RESULTS:
+: counter-stop
+
+*** dolist and dotimes
+**** dolist
+(dolist element list value)
++ the car of the list is bound to the element
++ the list is bound the cdr of the list
++ the return result is value
+#+begin_src emacs-lisp
+(setq animals '(cat dog pig))
+(defun reverse-list (list)
+  (let ((value ()) (element nil))
+   (dolist (element list value)
+    (setq value (cons element value))))
+    (reverse-list animals)
+#+end_src
+
+#+RESULTS:
+
+**** dotimes
+#+begin_src emacs-lisp
+(let ((value nil))
+    (dotimes (number 3)
+      (message "%d " number)))
+#+end_src
+
+#+RESULTS:
+
+

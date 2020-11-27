@@ -1,65 +1,71 @@
 
 # Table of Contents
 
-1.  [Day1](#org86c1249)
-    1.  [symbol](#org9549812)
-        1.  [it can be defined as a function and a variable which returns a value](#orgb01fee7)
-        2.  [when symbol is in a pair of parenthese and is the first position.It stands for a function.](#org1d99cb8)
-        3.  [when symbol is not in a pair of parenthese it stands for a variable.](#orgdcedc08)
-        4.  [a quotation before a pair of parenthese return what is written](#org31abc00)
-        5.  [atoms which in a pair of parenthese are separated by a white space](#orgb1c6389)
-    2.  [evaluate](#org9fff4b9)
-        1.  [how](#org39d51be)
-    3.  [function](#org4aa6aa4)
-        1.  [something basic](#orgea54e3c)
-        2.  [set and setq](#org2b99c1a)
-        3.  [buffer](#org85eb9f8)
-2.  [Day2](#org7fdb3e2)
-    1.  [function](#org8c154ef)
-        1.  [defun](#org09149ff)
-        2.  [let](#orga6be4cf)
-        3.  [if](#org7616fde)
-        4.  [save excurison](#orgd1712c6)
-        5.  [beginning of buffer](#org908281a)
-        6.  [mark-whole-buffer](#orgda39c39)
-        7.  [append-to-buffer](#org2689ae8)
-3.  [Day3](#orgeaebffe)
-    1.  [narrowing and widening](#org9224b16)
-        1.  [key binding](#org1c1e964)
-    2.  [save-restriction](#org0c34062)
-        1.  [use save-restriction and save-excurison](#orgf56f237)
-    3.  [what-lines](#org17f6899)
-        1.  [](#org4a85a9f)
-    4.  [more about interactive](#orga1191fc)
-        1.  [input many arguments](#org3c022c6)
-        2.  ["r" stands for a region](#org1ee611e)
-        3.  ["p" and "P"](#orgb361918)
-    5.  [car,cdr and cons](#org4960899)
-        1.  [car](#org8fecbc2)
-        2.  [cdr](#orgaf37eab)
-        3.  [cons](#orgd180cb0)
-        4.  [nthcdr](#org58672ef)
-        5.  [nth](#org2d580ce)
-        6.  [setcar](#orgf07e4f0)
-        7.  [setcdr](#org76dcd79)
+1.  [Day1](#orgf69323a)
+    1.  [symbol](#orgb40f1ab)
+        1.  [it can be defined as a function and a variable which returns a value](#org8559aea)
+        2.  [when symbol is in a pair of parenthese and is the first position.It stands for a function.](#org66ca7e0)
+        3.  [when symbol is not in a pair of parenthese it stands for a variable.](#org6b3bad7)
+        4.  [a quotation before a pair of parenthese return what is written](#orgaef0143)
+        5.  [atoms which in a pair of parenthese are separated by a white space](#org38299b9)
+    2.  [evaluate](#org31d6f62)
+        1.  [how](#orgd34ec92)
+    3.  [function](#orgd428e71)
+        1.  [something basic](#org58cfe95)
+        2.  [set and setq](#org2833e8e)
+        3.  [buffer](#orgc8a6576)
+2.  [Day2](#org2b022fa)
+    1.  [function](#org00f5108)
+        1.  [defun](#org172d2ae)
+        2.  [let](#org47f94d6)
+        3.  [if](#orga7f8aa2)
+        4.  [save excurison](#org3a54bee)
+        5.  [beginning of buffer](#orgce1aaa8)
+        6.  [mark-whole-buffer](#orgbdfdffe)
+        7.  [append-to-buffer](#orgcdef924)
+3.  [Day3](#orge712774)
+    1.  [narrowing and widening](#org07503cf)
+        1.  [key binding](#orgf1d921f)
+    2.  [save-restriction](#org9fae82c)
+        1.  [use save-restriction and save-excurison](#org8c974e2)
+    3.  [what-lines](#orgbbb3489)
+        1.  [](#org841b921)
+    4.  [more about interactive](#orgddd60a9)
+        1.  [input many arguments](#orgc6c23e7)
+        2.  ["r" stands for a region](#org975279c)
+        3.  ["p" and "P"](#orgd99f250)
+    5.  [car,cdr and cons](#org1600c4f)
+        1.  [car](#orgef870da)
+        2.  [cdr](#orgfd62f36)
+        3.  [cons](#org2d93339)
+        4.  [nthcdr](#org4356095)
+        5.  [nth](#org6ffd679)
+        6.  [setcar](#orgff6ddbb)
+        7.  [setcdr](#orgc1854a4)
+4.  [Day4](#orgd1cb74f)
+    1.  [defvar](#org8000156)
+    2.  [loops and recursion](#org03ebde3)
+        1.  [while](#org7d4c263)
+        2.  [increment loop](#org00f424b)
+        3.  [dolist and dotimes](#org6c90ad8)
 
 
-<a id="org86c1249"></a>
+<a id="orgf69323a"></a>
 
 # Day1
 
 
-<a id="org9549812"></a>
+<a id="orgb40f1ab"></a>
 
 ## symbol
 
 
-<a id="orgb01fee7"></a>
+<a id="org8559aea"></a>
 
 ### it can be defined as a function and a variable which returns a value
 
 
-<a id="org1d99cb8"></a>
+<a id="org66ca7e0"></a>
 
 ### when symbol is in a pair of parenthese and is the first position.It stands for a function.
 
@@ -68,7 +74,7 @@
         (+ 1 2)
 
 
-<a id="orgdcedc08"></a>
+<a id="org6b3bad7"></a>
 
 ### when symbol is not in a pair of parenthese it stands for a variable.
 
@@ -77,7 +83,7 @@
         fill-column    
 
 
-<a id="org31abc00"></a>
+<a id="orgaef0143"></a>
 
 ### a quotation before a pair of parenthese return what is written
 
@@ -86,29 +92,29 @@
     '(lion "a tree")
 
 
-<a id="orgb1c6389"></a>
+<a id="org38299b9"></a>
 
 ### atoms which in a pair of parenthese are separated by a white space
 
 
-<a id="org9fff4b9"></a>
+<a id="org31d6f62"></a>
 
 ## evaluate
 
 
-<a id="org39d51be"></a>
+<a id="orgd34ec92"></a>
 
 ### how
 
 move the cursor after the parenthese,and type **C-x C-e** to evaluate the expression
 
 
-<a id="org4aa6aa4"></a>
+<a id="orgd428e71"></a>
 
 ## function
 
 
-<a id="orgea54e3c"></a>
+<a id="org58cfe95"></a>
 
 ### something basic
 
@@ -118,7 +124,7 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
     -   side effects(*print something on the screen*)
 
 
-<a id="org2b99c1a"></a>
+<a id="org2833e8e"></a>
 
 ### set and setq
 
@@ -143,7 +149,7 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
     So it will return a error message.
 
 
-<a id="org85eb9f8"></a>
+<a id="orgc8a6576"></a>
 
 ### buffer
 
@@ -178,17 +184,17 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
         (switch-to-buffer (other-buffer))
 
 
-<a id="org7fdb3e2"></a>
+<a id="org2b022fa"></a>
 
 # Day2
 
 
-<a id="org8c154ef"></a>
+<a id="org00f5108"></a>
 
 ## function
 
 
-<a id="org09149ff"></a>
+<a id="org172d2ae"></a>
 
 ### defun
 
@@ -219,7 +225,7 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
 4.  **p** stands for prefix which means you should type before invoke a function
 
 
-<a id="orga6be4cf"></a>
+<a id="org47f94d6"></a>
 
 ### let
 
@@ -244,7 +250,7 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
               (message "the fruit is %s" one))
 
 
-<a id="org7616fde"></a>
+<a id="orga7f8aa2"></a>
 
 ### if
 
@@ -260,7 +266,7 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
     -   the **empty** list is falsehood
 
 
-<a id="orgd1712c6"></a>
+<a id="org3a54bee"></a>
 
 ### save excurison
 
@@ -296,7 +302,7 @@ save the positon of cursor(after evaluating the function,it return the initial l
       body&#x2026;)
 
 
-<a id="org908281a"></a>
+<a id="orgce1aaa8"></a>
 
 ### beginning of buffer
 
@@ -310,7 +316,7 @@ save the positon of cursor(after evaluating the function,it return the initial l
          (goto-char (point-min)))
 
 
-<a id="orgda39c39"></a>
+<a id="orgbdfdffe"></a>
 
 ### mark-whole-buffer
 
@@ -323,26 +329,26 @@ save the positon of cursor(after evaluating the function,it return the initial l
 (z-mark-whole-buffer)
 
 
-<a id="org2689ae8"></a>
+<a id="orgcdef924"></a>
 
 ### append-to-buffer
 
 insert-buffer-substring
 
 
-<a id="orgeaebffe"></a>
+<a id="orge712774"></a>
 
 # Day3
 
 
-<a id="org9224b16"></a>
+<a id="org07503cf"></a>
 
 ## narrowing and widening
 
 with narrowing, the rest of buffer is invisible
 
 
-<a id="org1c1e964"></a>
+<a id="orgf1d921f"></a>
 
 ### key binding
 
@@ -350,12 +356,12 @@ with narrowing, the rest of buffer is invisible
 **C-x n w** for *widen*
 
 
-<a id="org0c34062"></a>
+<a id="org9fae82c"></a>
 
 ## save-restriction
 
 
-<a id="orgf56f237"></a>
+<a id="org8c974e2"></a>
 
 ### use save-restriction and save-excurison
 
@@ -369,12 +375,12 @@ with narrowing, the rest of buffer is invisible
       body))
 
 
-<a id="org17f6899"></a>
+<a id="orgbbb3489"></a>
 
 ## what-lines
 
 
-<a id="org4a85a9f"></a>
+<a id="org841b921"></a>
 
 ### 
 
@@ -388,14 +394,14 @@ with narrowing, the rest of buffer is invisible
     	(message "The line number is %d" lines)))))
 
 
-<a id="orga1191fc"></a>
+<a id="orgddd60a9"></a>
 
 ## more about interactive
 
 Sepreate string with **\n**
 
 
-<a id="org3c022c6"></a>
+<a id="orgc6c23e7"></a>
 
 ### input many arguments
 
@@ -407,7 +413,7 @@ Sepreate string with **\n**
       (message "name:%s age:%d country:%s" name age country))
 
 
-<a id="org1ee611e"></a>
+<a id="org975279c"></a>
 
 ### "r" stands for a region
 
@@ -416,7 +422,7 @@ Sepreate string with **\n**
       (message "start:%d end:%d" start end))
 
 
-<a id="orgb361918"></a>
+<a id="orgd99f250"></a>
 
 ### "p" and "P"
 
@@ -431,7 +437,7 @@ invoke a function by typing **C-u prefix-argument M-x fun-name**
           (message "%d" num))
 
 
-<a id="org4960899"></a>
+<a id="org1600c4f"></a>
 
 ## car,cdr and cons
 
@@ -439,7 +445,7 @@ invoke a function by typing **C-u prefix-argument M-x fun-name**
 -   car and cdr to take apart lists
 
 
-<a id="org8fecbc2"></a>
+<a id="orgef870da"></a>
 
 ### car
 
@@ -448,7 +454,7 @@ the car of the list is the first item
     (car '(tiger lion))
 
 
-<a id="orgaf37eab"></a>
+<a id="orgfd62f36"></a>
 
 ### cdr
 
@@ -458,14 +464,14 @@ returns the rest of the list
     (cdr '(tiger lion cat))
 
 
-<a id="orgd180cb0"></a>
+<a id="org2d93339"></a>
 
 ### cons
 
     (cons 'tiger '(lion cat))
 
 
-<a id="org58672ef"></a>
+<a id="org4356095"></a>
 
 ### nthcdr
 
@@ -476,7 +482,7 @@ use cdr repeatedly
     (nthcdr 3 '(tiger lion cat))
 
 
-<a id="org2d580ce"></a>
+<a id="org6ffd679"></a>
 
 ### nth
 
@@ -485,7 +491,7 @@ use car repeatedly
     (nth 1 '(lion tiger cat))
 
 
-<a id="orgf07e4f0"></a>
+<a id="orgff6ddbb"></a>
 
 ### setcar
 
@@ -496,7 +502,7 @@ set the **car** a new value
     animals
 
 
-<a id="org76dcd79"></a>
+<a id="orgc1854a4"></a>
 
 ### setcdr
 
@@ -505,4 +511,77 @@ set the **cdr** a new value
     (setq animals (list 'tiger 'cat 'lion))
     (setcdr animals (list 'pig 'dog))
     animals
+
+
+<a id="orgd1cb74f"></a>
+
+# Day4
+
+
+<a id="org8000156"></a>
+
+## defvar
+
+-   it only sets the value of the variable when it doesn't exits
+-   if the value has exited,defvar will not overrider the initial value
+-   defvar has document string
+
+    (defvar num 3)
+    num
+
+
+<a id="org03ebde3"></a>
+
+## loops and recursion
+
+
+<a id="org7d4c263"></a>
+
+### while
+
+    (setq animals '(pig cat tiger dog))
+    (defun print-list-element (list)
+      (while list
+       (print (car list))
+       (setq list (cdr list))))
+    (print-list-element animals)nil
+
+
+<a id="org00f424b"></a>
+
+### increment loop
+
+use counter to stop a loop
+
+    (setq count 1)
+    (defun counter-stop (num)
+      (while (< count num))
+       body
+       (setq count (+ 1 count))))
+
+
+<a id="org6c90ad8"></a>
+
+### dolist and dotimes
+
+1.  dolist
+
+    (dolist element list value)
+    
+    -   the car of the list is bound to the element
+    -   the list is bound the cdr of the list
+    -   the return result is value
+    
+        (setq animals '(cat dog pig))
+        (defun reverse-list (list)
+          (let ((value ()) (element nil))
+           (dolist (element list value)
+            (setq value (cons element value))))
+            (reverse-list animals)
+
+2.  dotimes
+
+        (let ((value nil))
+            (dotimes (number 3)
+              (message "%d " number)))
 
