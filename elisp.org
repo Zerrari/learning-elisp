@@ -1,8 +1,8 @@
 * Day1
 ** symbol
-*** it can be defined as a function and a variable which returns a value
-*** when symbol is in a pair of parenthese and is the first position.It stands for a function.
-**** 
++ it can be defined as a function and a variable which returns a value
++ when symbol is in a pair of parenthese and is the first position.It stands for a function.
+ 
 #+begin_src emacs-lisp
 (+ 1 2)
 #+end_src
@@ -10,8 +10,8 @@
 #+RESULTS:
 : 3
 
-*** when symbol is not in a pair of parenthese it stands for a variable.
-**** 
++ when symbol is not in a pair of parenthese it stands for a variable.
+ 
 #+begin_src emacs-lisp
 fill-column    
 #+end_src
@@ -19,7 +19,8 @@ fill-column
 #+RESULTS:
 : 70
 
-*** a quotation before a pair of parenthese return what is written
++ a quotation before a pair of parenthese return what is written
+
 #+begin_src emacs-lisp
 '(lion tigger)
 #+end_src
@@ -30,10 +31,11 @@ fill-column
 #+begin_src emacs-lisp
 '(lion "a tree")
 #+end_src
+
 #+RESULTS:
 | lion | a tree |
 
-*** atoms which in a pair of parenthese are separated by a white space
++ atoms which in a pair of parenthese are separated by a white space
 ** evaluate
 *** how
 move the cursor after the parenthese,and type *C-x C-e* to evaluate the expression
@@ -54,8 +56,8 @@ flowers
 | rose |
 
 **** setq
-***** an easy way to use set
-***** 
++ an easy way to use set
+ 
       #+begin_src emacs-lisp 
       (setq animals '(lion tigger))
       animals
@@ -66,12 +68,16 @@ flowers
 
 **** something important
 If you don't add *'* before symbol,it will be explanined as a function.
-For example, if you don't add *'* before (lion tigger),the lisp interpretor will think lion is a function.
+
+For example, if you don't add *'* before (lion tigger),
+
+the lisp interpretor will think lion is a function.
+
 So it will return a error message.
 
 *** buffer 
 **** buffer-name and buffer-file-name
-***** buffer-name
++ buffer-name
 It returns the current buffer name
 #+begin_src emacs-lisp
 (buffer-name)
@@ -80,7 +86,7 @@ It returns the current buffer name
 #+RESULTS:
 : elisp.org
 
-***** buffer-file-name
++ buffer-file-name
 It returns a full path which the file belongs to.
 #+begin_src emacs-lisp
 (buffer-file-name)
@@ -120,7 +126,7 @@ It returns the buffer which you visited.
 * Day2
 ** function
 *** defun 
-**** template
++ template
 #+begin_src emacs-lisp
 (defun fun-name (arguments)
      "optional document"
@@ -128,8 +134,8 @@ It returns the buffer which you visited.
      (body))
 #+end_src
 
-**** interactive(/need input in a minibuffer/)
-***** example
++ interactive(/need input in a minibuffer/)
+
 #+begin_src emacs-lisp
 (defun add (x)
      (interactive "p")  
@@ -139,10 +145,10 @@ It returns the buffer which you visited.
 #+RESULTS:
 : add
 
-**** invoke an interactive function by typing *C-u argument M-x fun-name*
-**** *p* stands for prefix which means you should type before invoke a function
++ invoke an interactive function by typing *C-u argument M-x fun-name*
++ *p* stands for prefix which means you should type before invoke a function
 *** let
-**** template
++ template
 #+begin_src emacs-lisp
 (let varlist body)
 #+end_src
@@ -162,7 +168,7 @@ It returns the buffer which you visited.
 #+RESULTS:
 : the fruit is apple
 
-**** something important
++ something important
 unintialized variables will be bond to *nil*
 #+begin_src emacs-lisp
 (let ((one)
@@ -174,7 +180,7 @@ unintialized variables will be bond to *nil*
 : the fruit is nil
 
 *** if
-**** example
++ example
 #+begin_src emacs-lisp
 (if (> 5 4)
      (message "yes")
@@ -183,9 +189,9 @@ unintialized variables will be bond to *nil*
 
 #+RESULTS:
 : yes
-**** truth and falsehood
-+ anything except nil represents true
-+ the *empty* list is falsehood
++ truth and falsehood
+1. anything except nil represents true
+2. the *empty* list is falsehood
 
 *** save excurison
 save the positon of cursor(after evaluating the function,it return the initial location)
@@ -453,12 +459,14 @@ use counter to stop a loop
 
 #+RESULTS:
 
+
 * Day5
 ** numbers
 *** basics
 + initial sgin
 + followed by a period
 + two's complement notation to  represent negative number
+
 #+begin_src emacs-lisp
 1.
 +1
@@ -474,12 +482,14 @@ use counter to stop a loop
 
 #+RESULTS:
 : 2305843009213693951
+
 #+begin_src emacs-lisp
 (message "%d" most-negative-fixnum)
 #+end_src
 
 #+RESULTS:
 : -2305843009213693952
+
 #+begin_src emacs-lisp
 (message "%d" integer-width)
 #+end_src
@@ -508,6 +518,7 @@ return a cons cell(s . e)
 
 **** ldexp
 give s and e, return x
+
 #+begin_src emacs-lisp
 (ldexp 0.875 2)
 #+end_src
@@ -517,6 +528,7 @@ give s and e, return x
 
 **** copysign
 copy sign of x2 to x1 and return the result
+
 #+begin_src emacs-lisp
 (copysign x1 x2)
 #+end_src
@@ -531,6 +543,7 @@ copy sign of x2 to x1 and return the result
 **** logb
 logarithm base 2 of |x|
 round to an integer
+
 #+begin_src emacs-lisp
 (logb 2) 1
 #+end_src
@@ -544,10 +557,9 @@ round to an integer
 
 #+RESULTS:
 : 3
-
-
 *** type predicates
 + bignump
+
 #+begin_src emacs-lisp
 (bignump 2)  nil
 #+end_src
@@ -557,11 +569,13 @@ round to an integer
 + fixnump
 
 + floatp
+
 #+begin_src emacs-lisp
 (floatp 2) nil
 #+end_src
 
 + integerp
+
 #+begin_src emacs-lisp
 (integerp 2) t
 #+end_src
@@ -570,6 +584,7 @@ round to an integer
 
 + natnump/wholenump
 check if it is a natural number
+
 #+begin_src emacs-lisp
 (natnump 3)  t
 (natnump -1) nil
@@ -578,6 +593,7 @@ check if it is a natural number
 #+RESULTS:
 
 + zerop
+
 #+begin_src emacs-lisp
 (zerop 0)  t
 #+end_src
@@ -623,6 +639,7 @@ check if their valus are indistinguishable
 
 **** *eq*
 check if they are the same object
+
 #+begin_src emacs-lisp
 (eq 1 1) 
 #+end_src
@@ -646,6 +663,7 @@ check if they are the same object
 : 3
 
 **** min
+
 #+begin_src emacs-lisp
 (min 1 2 3)
 #+end_src
@@ -682,6 +700,7 @@ convert integer to float
 **** convert to integer
 + truncate
 rounding towards zero
+
 #+begin_src emacs-lisp
 (truncate 1.7)
 #+end_src
@@ -698,6 +717,7 @@ rounding towards zero
 
 + floor
 rounding downward
+
 #+begin_src emacs-lisp
 (floor 1.2)
 #+end_src
@@ -714,6 +734,7 @@ rounding downward
 
 + ceiling
 rounding upward
+
 #+begin_src emacs-lisp
 (ceiling 1.5)
 #+end_src
@@ -731,6 +752,7 @@ rounding upward
 + round
 rounding towards the nearest integer
 if it is a mid-value,round to an even integer
+
 #+begin_src emacs-lisp
 (round 1.2)
 #+end_src
@@ -748,6 +770,7 @@ if it is a mid-value,round to an even integer
 *** arithmetic operations
 **** 1+ / 1-
 don't change the value of variable
+
 #+begin_src emacs-lisp
 (setq foo 2)
 (1+ foo)
@@ -766,6 +789,7 @@ foo
 : 3
 
 **** +
+
 #+begin_src emacs-lisp
 (+)
 #+end_src
@@ -781,6 +805,7 @@ foo
 : 6
 
 **** -
+
 #+begin_src emacs-lisp
 (- 10 1 1 2)
 #+end_src
@@ -796,6 +821,7 @@ foo
 : -10
 
 **** *
+
 #+begin_src emacs-lisp
 (*)
 #+end_src
@@ -811,6 +837,7 @@ foo
 : 6
 
 **** /
+
 #+begin_src emacs-lisp
 (/ 26 3 1)
 #+end_src
@@ -833,6 +860,7 @@ foo
 : 0.3333333333333333
 
 **** %
+
 #+begin_src emacs-lisp
 (% 9 4)
 #+end_src
@@ -842,6 +870,7 @@ foo
 
 **** mod
 accept float argument,unlike %
+
 #+begin_src emacs-lisp
 (mod 9 4)
 #+end_src
@@ -875,6 +904,7 @@ return the float whose value is nearby integer
 **** ash
 + shift the bits left if the argument is positive
 + if it moves right, replace the high position of *0*
+
 #+begin_src emacs-lisp
 (ash 7 1)
 #+end_src
@@ -890,6 +920,7 @@ return the float whose value is nearby integer
 : 4
 
 **** lsh
+
 #+begin_src emacs-lisp
 (lsh -14 1)
 #+end_src
@@ -906,6 +937,7 @@ return the float whose value is nearby integer
 
 **** logand 
 return the bitwise *and* of the arguments
+
 #+begin_src emacs-lisp
 (logand 12 13)
 #+end_src
@@ -915,6 +947,7 @@ return the bitwise *and* of the arguments
 
 **** logior
 return the bitwise *or* of the arguments
+
 #+begin_src emacs-lisp
 (logior 12 5)
 #+end_src
@@ -924,6 +957,7 @@ return the bitwise *or* of the arguments
 
 **** logxor 
 return the bitwise *xor* of the arguments
+
 #+begin_src emacs-lisp
 (logxor 12 5)
 #+end_src
@@ -933,6 +967,7 @@ return the bitwise *xor* of the arguments
 
 **** lognot
 return the bitwise *not* of the argument
+
 #+begin_src emacs-lisp
 (lognot 5)
 #+end_src  
@@ -943,6 +978,7 @@ return the bitwise *not* of the argument
 **** logcount
 + if the integer is positive,return the number of ones
 + else return the number of zeros
+
 #+begin_src emacs-lisp
 (logcount 43)
 #+end_src
@@ -966,6 +1002,7 @@ return the bitwise *not* of the argument
 + atan
 + exp
 return e to the power *arg*
+
 #+begin_src emacs-lisp
 (exp 2)
 #+end_src
@@ -974,10 +1011,12 @@ return e to the power *arg*
 : 7.38905609893065
 
 + log
+
 #+begin_src emacs-lisp
 (log arg &optional base)
 #+end_src
 if the base isn't specified,the *e* will be provided defaultly
+
 #+begin_src emacs-lisp
 (log (exp 2))
 #+end_src
@@ -987,6 +1026,7 @@ if the base isn't specified,the *e* will be provided defaultly
 
 + expt
 return x rasied to the power y
+
 #+begin_src emacs-lisp
 (expt x y)
 #+end_src
@@ -1001,6 +1041,7 @@ return x rasied to the power y
 + sqrt
 
 + float-e
+
 #+begin_src emacs-lisp
 float-e
 #+end_src
@@ -1009,6 +1050,7 @@ float-e
 : 2.718281828459045
 
 + float-pi
+
 #+begin_src emacs-lisp
 float-pi
 #+end_src
@@ -1018,6 +1060,7 @@ float-pi
 
 *** random numbers
 **** set the seed to a constant value
+
 #+begin_src emacs-lisp
 (random "")
 #+end_src
