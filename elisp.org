@@ -453,4 +453,675 @@ use counter to stop a loop
 
 #+RESULTS:
 
+* Day5
+** numbers
+*** basics
++ initial sgin
++ followed by a period
++ two's complement notation to  represent negative number
+#+begin_src emacs-lisp
+1.
++1
++1.
+#+end_src
+
+#+RESULTS:
+: 1
+
+#+begin_src emacs-lisp
+(message "%d" most-positive-fixnum)
+#+end_src
+
+#+RESULTS:
+: 2305843009213693951
+#+begin_src emacs-lisp
+(message "%d" most-negative-fixnum)
+#+end_src
+
+#+RESULTS:
+: -2305843009213693952
+#+begin_src emacs-lisp
+(message "%d" integer-width)
+#+end_src
+
+#+RESULTS:
+: 65536
+
+#+begin_src emacs-lisp
+(isnan 3.0)
+#+end_src
+
+#+RESULTS:
+: nil
+**** frexp
+return a cons cell(s . e)
++ s represents significand
++ e represents exponet
+
+3.5 = 0.875*2^2
+#+begin_src emacs-lisp
+(frexp 3.5)
+#+end_src
+
+#+RESULTS:
+: (0.875 . 2)
+
+**** ldexp
+give s and e, return x
+#+begin_src emacs-lisp
+(ldexp 0.875 2)
+#+end_src
+
+#+RESULTS:
+: 3.5
+
+**** copysign
+copy sign of x2 to x1 and return the result
+#+begin_src emacs-lisp
+(copysign x1 x2)
+#+end_src
+
+#+begin_src emacs-lisp
+(copysign 3.5 -3.5)
+#+end_src
+
+#+RESULTS:
+: -3.5
+
+**** logb
+logarithm base 2 of |x|
+round to an integer
+#+begin_src emacs-lisp
+(logb 2) 1
+#+end_src
+
+#+RESULTS:
+: 1
+
+#+begin_src emacs-lisp
+(logb 10) 3
+#+end_src
+
+#+RESULTS:
+: 3
+
+
+*** type predicates
++ bignump
+#+begin_src emacs-lisp
+(bignump 2)  nil
+#+end_src
+
+#+RESULTS:
+
++ fixnump
+
++ floatp
+#+begin_src emacs-lisp
+(floatp 2) nil
+#+end_src
+
++ integerp
+#+begin_src emacs-lisp
+(integerp 2) t
+#+end_src
+
++ numberp
+
++ natnump/wholenump
+check if it is a natural number
+#+begin_src emacs-lisp
+(natnump 3)  t
+(natnump -1) nil
+#+end_src
+
+#+RESULTS:
+
++ zerop
+#+begin_src emacs-lisp
+(zerop 0)  t
+#+end_src
+
+#+RESULTS:
+: t
+
+*** comparison of numbers
+**** *=*
++ numerical equality
++ only accept numbers or markers as arguments
+
+#+begin_src emacs-lisp
+(= 2 2)
+#+end_src 
+
+#+RESULTS:
+: t
+
+#+begin_src emacs-lisp
+(= 2 2.0)
+#+end_src
+
+#+RESULTS:
+: t
+
+**** *equal*
+check if their valus are indistinguishable
+
+#+begin_src emacs-lisp
+(equal 1 1.0)
+#+end_src
+
+#+RESULTS:
+: nil
+
+#+begin_src emacs-lisp
+(equal 1 1)
+#+end_src
+
+#+RESULTS:
+: t
+
+**** *eq*
+check if they are the same object
+#+begin_src emacs-lisp
+(eq 1 1) 
+#+end_src
+
+#+RESULTS:
+: t
+
+#+begin_src emacs-lisp
+(eq 2 2.0) 
+#+end_src
+
+#+RESULTS:
+: nil
+
+**** max
+#+begin_src emacs-lisp
+(max 1 2 3)
+#+end_src
+
+#+RESULTS:
+: 3
+
+**** min
+#+begin_src emacs-lisp
+(min 1 2 3)
+#+end_src
+
+#+RESULTS:
+: 1
+
+**** abs
+#+begin_src emacs-lisp
+(abs -3)
+#+end_src
+
+#+RESULTS:
+: 3
+
+*** conversion
+**** float
+convert integer to float
+
+#+begin_src emacs-lisp
+(float 3)
+#+end_src
+
+#+RESULTS:
+: 3.0
+
+#+begin_src emacs-lisp
+(float 3.0)
+#+end_src
+
+#+RESULTS:
+: 3.0
+
+**** convert to integer
++ truncate
+rounding towards zero
+#+begin_src emacs-lisp
+(truncate 1.7)
+#+end_src
+
+#+RESULTS:
+: 1
+
+#+begin_src emacs-lisp
+(truncate 1.2)
+#+end_src
+
+#+RESULTS:
+: 1
+
++ floor
+rounding downward
+#+begin_src emacs-lisp
+(floor 1.2)
+#+end_src
+
+#+RESULTS:
+: 1
+
+#+begin_src emacs-lisp
+(floor -1.2)
+#+end_src
+
+#+RESULTS:
+: -2
+
++ ceiling
+rounding upward
+#+begin_src emacs-lisp
+(ceiling 1.5)
+#+end_src
+
+#+RESULTS:
+: 2
+
+#+begin_src emacs-lisp
+(ceiling -1.3)
+#+end_src
+
+#+RESULTS:
+: -1
+
++ round
+rounding towards the nearest integer
+if it is a mid-value,round to an even integer
+#+begin_src emacs-lisp
+(round 1.2)
+#+end_src
+
+#+RESULTS:
+: 1
+
+#+begin_src emacs-lisp
+(round 1.5)
+#+end_src
+
+#+RESULTS:
+: 2
+
+*** arithmetic operations
+**** 1+ / 1-
+don't change the value of variable
+#+begin_src emacs-lisp
+(setq foo 2)
+(1+ foo)
+foo
+#+end_src
+
+#+RESULTS:
+: 2
+
+#+begin_src emacs-lisp
+(1+ 2)
+
+#+end_src
+
+#+RESULTS:
+: 3
+
+**** +
+#+begin_src emacs-lisp
+(+)
+#+end_src
+
+#+RESULTS:
+: 0
+
+#+begin_src emacs-lisp
+(+ 1 2 3)
+#+end_src
+
+#+RESULTS:
+: 6
+
+**** -
+#+begin_src emacs-lisp
+(- 10 1 1 2)
+#+end_src
+
+#+RESULTS:
+: 6
+
+#+begin_src emacs-lisp
+(- 10)
+#+end_src
+
+#+RESULTS:
+: -10
+
+**** *
+#+begin_src emacs-lisp
+(*)
+#+end_src
+
+#+RESULTS:
+: 1
+
+#+begin_src emacs-lisp
+(* 1 2 3)
+#+end_src
+
+#+RESULTS:
+: 6
+
+**** /
+#+begin_src emacs-lisp
+(/ 26 3 1)
+#+end_src
+
+#+RESULTS:
+: 8
+
+#+begin_src emacs-lisp
+(/ 26 3 1.0)
+#+end_src
+
+#+RESULTS:
+: 8.666666666666666
+
+#+begin_src emacs-lisp
+(/ 3.0)
+#+end_src
+
+#+RESULTS:
+: 0.3333333333333333
+
+**** %
+#+begin_src emacs-lisp
+(% 9 4)
+#+end_src
+
+#+RESULTS:
+: 1
+
+**** mod
+accept float argument,unlike %
+#+begin_src emacs-lisp
+(mod 9 4)
+#+end_src
+
+#+RESULTS:
+: 1
+
+#+begin_src emacs-lisp
+(mod 9 -4)
+#+end_src
+
+#+RESULTS:
+: -3
+
+*** float rounding
+return the float whose value is nearby integer
+
++ ffloor
+#+begin_src emacs-lisp
+(ffloor 3.5)
+#+end_src
+
+#+RESULTS:
+: 3.0
+
++ fceiling
++ ftruncate
++ fround
+
+*** bitwise operations
+**** ash
++ shift the bits left if the argument is positive
++ if it moves right, replace the high position of *0*
+#+begin_src emacs-lisp
+(ash 7 1)
+#+end_src
+
+#+RESULTS:
+: 14
+
+#+begin_src emacs-lisp
+(ash 8 -1)
+#+end_src
+
+#+RESULTS:
+: 4
+
+**** lsh
+#+begin_src emacs-lisp
+(lsh -14 1)
+#+end_src
+
+#+RESULTS:
+: -28
+
+#+begin_src emacs-lisp
+(lsh 14 -1)
+#+end_src
+
+#+RESULTS:
+: 7
+
+**** logand 
+return the bitwise *and* of the arguments
+#+begin_src emacs-lisp
+(logand 12 13)
+#+end_src
+
+#+RESULTS:
+: 12
+
+**** logior
+return the bitwise *or* of the arguments
+#+begin_src emacs-lisp
+(logior 12 5)
+#+end_src
+
+#+RESULTS:
+: 13
+
+**** logxor 
+return the bitwise *xor* of the arguments
+#+begin_src emacs-lisp
+(logxor 12 5)
+#+end_src
+
+#+RESULTS:
+: 9
+
+**** lognot
+return the bitwise *not* of the argument
+#+begin_src emacs-lisp
+(lognot 5)
+#+end_src  
+
+#+RESULTS:
+: -6
+
+**** logcount
++ if the integer is positive,return the number of ones
++ else return the number of zeros
+#+begin_src emacs-lisp
+(logcount 43)
+#+end_src
+
+#+RESULTS:
+: 4
+
+#+begin_src emacs-lisp
+(logcount -43)
+#+end_src
+
+#+RESULTS:
+: 3
+
+*** mathmatical functions
++ sin
++ cos
++ tan
++ asin
++ acos
++ atan
++ exp
+return e to the power *arg*
+#+begin_src emacs-lisp
+(exp 2)
+#+end_src
+
+#+RESULTS:
+: 7.38905609893065
+
++ log
+#+begin_src emacs-lisp
+(log arg &optional base)
+#+end_src
+if the base isn't specified,the *e* will be provided defaultly
+#+begin_src emacs-lisp
+(log (exp 2))
+#+end_src
+
+#+RESULTS:
+: 2.0
+
++ expt
+return x rasied to the power y
+#+begin_src emacs-lisp
+(expt x y)
+#+end_src
+
+#+begin_src emacs-lisp
+(expt 3 2)
+#+end_src
+
+#+RESULTS:
+: 9
+
++ sqrt
+
++ float-e
+#+begin_src emacs-lisp
+float-e
+#+end_src
+
+#+RESULTS:
+: 2.718281828459045
+
++ float-pi
+#+begin_src emacs-lisp
+float-pi
+#+end_src
+
+#+RESULTS:
+: 3.141592653589793
+
+*** random numbers
+**** set the seed to a constant value
+#+begin_src emacs-lisp
+(random "")
+#+end_src
+#+begin_src emacs-lisp
+
+(random 5)
+#+end_src
+
+#+RESULTS:
+: 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
