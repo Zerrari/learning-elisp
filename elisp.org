@@ -127,12 +127,16 @@ It returns the buffer which you visited.
 ** function
 *** defun 
 + template
+
 #+begin_src emacs-lisp
 (defun fun-name (arguments)
      "optional document"
      (optional interactive)
      (body))
 #+end_src
+
+#+RESULTS:
+: fun-name
 
 + interactive(/need input in a minibuffer/)
 
@@ -1167,4 +1171,561 @@ float-pi
 
 
 
+
+
+* Day6
+** strings and characters
+*** predicates for strings
+**** stringp
+This function returns t if object is a string, nil otherwise
+
+#+begin_src emacs-lisp
+(stringp "asd")  t
+#+end_src
+
+#+RESULTS:
+: t
+
+#+begin_src emacs-lisp
+(stringp nil)  nil
+#+end_src
+
+#+RESULTS:
+
+**** string-or-null-p
+This function returns t if object is a string or nil. It returns nil otherwise.
+
+#+begin_src emacs-lisp
+(string-or-null-p nil) t
+#+end_src
+
+#+RESULTS:
+: t
+
+**** char-or-string-p
+This function returns t if object is a string or a character (i.e., an integer), nil otherwise.
+
+#+begin_src emacs-lisp
+(char-or-string-p ?a) t
+#+end_src
+
+#+RESULTS:
+: t
+
+#+begin_src emacs-lisp
+(char-or-string-p "asdf") t
+#+end_src
+
+#+RESULTS:
+: t
+
+*** creating strings
+**** make-string
+#+begin_src emacs-lisp
+(make-string count character &optional multibyte)
+#+end_src
+
+#+begin_src emacs-lisp
+(make-string 5 ?x)  "xxxxx"
+#+end_src
+
+#+RESULTS:
+: xxxxx
+
+**** string
+#+begin_src emacs-lisp
+(string &rest characters)
+#+end_src
+
+#+begin_src emacs-lisp
+(string ?a ?d) "ad"
+#+end_src
+
+#+RESULTS:
+: ad
+
+**** substring
++ include the start,exclude the end
++ a negative argument is accpeted (-1 stands for the last index)
++ default start stands for 0,end stands for the length of the string
+#+begin_src emacs-lisp
+(substring string &optional start end)
+#+end_src
+
+#+begin_src emacs-lisp
+(substring "asdfg" 1)    "sdfg"
+#+end_src
+
+#+RESULTS:
+: sdfg
+
+#+begin_src emacs-lisp
+(substring "asdfg" -2 -1)  "f"
+#+end_src
+
+#+RESULTS:
+: f
+
+**** concat
+#+begin_src emacs-lisp
+(concat &rest sequences)
+#+end_src
+
+#+begin_src emacs-lisp
+(concat "sda" "sad") "sdasad"
+#+end_src
+
+#+RESULTS:
+: sdasad
+
+if concat receives no argun=ments,it returns empty string.
+#+begin_src emacs-lisp
+(concat)  ""
+#+end_src
+
+#+RESULTS:
+
+**** split-string
+#+begin_src emacs-lisp
+(split-string string &optional separators omit-nulls trim)
+#+end_src
+
+#+begin_src emacs-lisp
+(split-string "hello world")  "hello" "world"
+#+end_src
+
+#+RESULTS:
+| hello | world |
+
+#+begin_src emacs-lisp
+(split-string "  hello world   ")
+#+end_src
+
+#+RESULTS:
+| hello | world |
+
+*** modifying strings
+**** store-substring
+#+begin_src emacs-lisp
+(store-substring string idx obj)
+#+end_src
+
+#+begin_src emacs-lisp
+(store-substring "asdfg" 1 "asd")  aasdg
+#+end_src
+
+#+RESULTS:
+: aasdg
+
+**** aset
+#+begin_src emacs-lisp
+(aset string idx char)
+#+end_src
+
+#+begin_src emacs-lisp
+?????(aset "asdfg" 1 ?a)
+
+#+end_src
+
+#+RESULTS:
+: 97
+
+**** clear-string
++ It clears its contents to zero
+#+begin_src emacs-lisp
+(clear-string string)
+#+end_src
+
+#+begin_src emacs-lisp
+(clear-string "asdad") nil
+#+end_src
+
+#+RESULTS:
+
+*** comparison of character and strings
+#+begin_src emacs-lisp
+(char-equal character1 character2)
+#+end_src
+
+#+begin_src emacs-lisp
+(char-equal ?a ?c) nil
+#+end_src
+
+#+RESULTS:
+
+If case-fold-search is non-nil,this function ignores differences in case
+#+begin_src emacs-lisp
+(char-equal ?a ?A)   t
+(setq case-fold-search nil)
+(char-equal ?a ?A)   nil
+#+end_src
+
+#+RESULTS:
+: t
+
+**** string= / string-equal
+#+begin_src emacs-lisp
+(string= string1 string2)
+#+end_src
+
+#+begin_src emacs-lisp
+(string= "asdf" "asdf")  t
+#+end_src
+
+#+RESULTS:
+: t
+
+#+begin_src emacs-lisp
+(string= "asdf" "asd")  nil
+#+end_src
+
+#+RESULTS:
+
+
+**** string< / string-lessp
++ a string has no characters which is less than any other string
+
+#+begin_src emacs-lisp
+(string< string1 string2)
+#+end_src
+
+#+begin_src emacs-lisp
+(string< "" "sad")  t
+#+end_src
+
+#+RESULTS:
+: t
+
+
+#+begin_src emacs-lisp
+(string< "sad" "sadf")  t
+#+end_src
+
+#+RESULTS:
+: t
+
+**** string-version-lessp
++ It trests sequences of numbers as if they comprised a base-ten number,then compare them.
+#+begin_src emacs-lisp
+(string-version-lessp string1 string2)
+#+end_src
+
+#+begin_src emacs-lisp
+(string-version-lessp "12" "1") nil
+#+end_src
+
+#+RESULTS:
+
+#+begin_src emacs-lisp
+(string-version-lessp "foo2.png" "foo12.png")   t
+#+end_src
+
+#+RESULTS:
+: t
+
+**** string-prefix-p
++ This function returns non-nil,if string1 is a prefix of string2.
++ If the ignore-case is non-nil,the comparison ignores case differences.
+#+begin_src emacs-lisp
+(string-prefix-p string1 string2 &optional ignore-case)
+#+end_src
+
+#+begin_src emacs-lisp
+(string-prefix-p "asdf" "asdfg" 1)  t
+#+end_src
+
+#+RESULTS:
+: t
+
+#+begin_src emacs-lisp
+(string-prefix-p "asdf" "ASDFF" nil) nil
+#+end_src
+
+**** string-suffix-p
+#+begin_src emacs-lisp
+(string-suffix-p "asdf" "AASDF" 1) t
+#+end_src
+
+#+begin_src emacs-lisp
+(string-suffix-p "asdf" "AASDF") nil
+#+end_src
+
+**** compare-strings
++ If the parts of strings match,it returns t
++ Otherwise,the value is an integer which how many leading characters agree.
++ The sign is negative if the string1 is less.
+#+begin_src emacs-lisp
+(compare-strings string1 start1 end1 string2 start2 end2 &optional ignore-case)
+#+end_src
+
+#+begin_src emacs-lisp
+(compare-strings "asdfg" 0 3 "dfgasd" 3 6)  t
+#+end_src
+
+#+RESULTS:
+: t
+
+**** string-distance
+#+begin_src emacs-lisp
+(string-distance string1 string2 &optional bytecompare)
+#+end_src
+
++ It returns the Levenshtein distance.
+
+#+begin_src emacs-lisp
+(string-distance "asdf" "asd")  1
+#+end_src
+
+#+RESULTS:
+: 1
+
+*** conversion of characters and strings
+**** number-to-string
+#+begin_src emacs-lisp
+(number-to-string number)
+#+end_src
+
+#+begin_src emacs-lisp
+(number-to-string 123)  "123"
+#+end_src
+
+#+RESULTS:
+: 123
+
+#+begin_src emacs-lisp
+(number-to-string -23)  "-23"
+#+end_src
+
+#+RESULTS:
+: -23
+
+**** string-to-number
+#+begin_src emacs-lisp
+(string-to-number string &optional base)
+#+end_src
+
+#+begin_src emacs-lisp
+(string-to-number "1234")  1234
+#+end_src
+
+#+RESULTS:
+: 1234
+
+#+begin_src emacs-lisp
+(string-to-number "asd123")  0
+#+end_src
+
+#+RESULTS:
+: 0
+
+#+begin_src emacs-lisp
+(string-to-number "      23 apples")  23
+#+end_src
+
+#+RESULTS:
+: 23
+
+#+begin_src emacs-lisp
+(string-to-number "23" 8) 19
+#+end_src
+
+#+RESULTS:
+: 19
+
+
+**** char-to-string
+#+begin_src emacs-lisp
+(char-to-string character)
+#+end_src
+
+#+begin_src emacs-lisp
+(char-to-string ?a)  "a"
+#+end_src
+
+**** (string-to-char)
++ The function returns the first character of the string.
++ If the string is empty,it returns 0.
+#+begin_src emacs-lisp
+(string-to-char string)
+#+end_src
+
+#+begin_src emacs-lisp
+(string-to-char "ASD") ?A
+#+end_src
+
+#+begin_src emacs-lisp
+(string-to-char "") 0
+#+end_src
+
+**** formatting strings
+#+begin_src emacs-lisp
+(format string &rest objects)
+#+end_src
+
+#+begin_src emacs-lisp
+(format "ASD")  "ASD"
+#+end_src
+
+#+RESULTS:
+: ASD
+
+***** valid format specifications
++ %s 
+print without "" 
+#+begin_src emacs-lisp
+(format "This is an %s" "apple") "This is an apple"
+#+end_src
+
+#+RESULTS:
+: This is an apple
+
++ %S
+print with "" and \
+#+begin_src emacs-lisp
+(format "This is an %S" "apple")  "This is an \"apple\""
+#+end_src
+
+#+RESULTS:
+: This is an "apple"
+
++ %o
+replace the specification with the base-eight number
+It also accepts float point as an integer,droppong any fraction
+#+begin_src emacs-lisp
+(format "%o" 23)  "27"
+#+end_src
+
+#+RESULTS:
+: 27
+
+#+begin_src emacs-lisp
+(format "%o" 23.5)  "27"
+#+end_src
+
+#+RESULTS:
+: 27
+
++ %x
+base-sixteen
+with lower case
+#+begin_src emacs-lisp
+(format "%x" 29)  "1d"
+#+end_src
+
+#+RESULTS:
+: 1d
+
++ %X
+base-sixteen 
+with upper case
+#+begin_src emacs-lisp
+(format "%X" 29)  "1D"
+#+end_src
+
+#+RESULTS:
+: 1D
+
++ %c
+repalce the specification with the character
+#+begin_src emacs-lisp
+(format "This is %c" ?a) "This is a"
+#+end_src
+
+#+RESULTS:
+: This is a
+
++ %f
+#+begin_src emacs-lisp
+(format "%f" 13.5)  "13.500000"
+#+end_src
+
+#+RESULTS:
+: 13.500000
+
++ %%
+replace the specification with single "%"
+
+***** field numbers in specification
+It causes the format specification to convert the argument with the given number.
+#+begin_src emacs-lisp
+(format "%s %1$s %% %3$s" "x" "y" "z")  "x x % z"
+#+end_src
+
+#+RESULTS:
+: x x % z
+
+***** flag characters
+After the '%' and field numbers,ypu can put flag characters.
++ '+'
+a plus sign before a nonnegative number
+#+begin_src emacs-lisp
+(format "%+d" 23)   "+23"
+#+end_src
+
+#+RESULTS:
+: +23
+
++ '#'
+#+begin_src emacs-lisp
+(format "%#o" 23)   "027"
+#+end_src
+
+#+RESULTS:
+: 027
+
+#+begin_src emacs-lisp
+(format "%#x" 29)  "0x1d"
+#+end_src
+
+#+RESULTS:
+: 0x1d
+
++ '0'
+the padding consists of '0' characters instead of spaces
+this flag is ingored for specification like "%s" "%S" or "%c"
+#+begin_src emacs-lisp
+(format "%06d" 23) "000023"
+#+end_src
+
+#+RESULTS:
+: 000023
+
+#+begin_src emacs-lisp
+(format "%6d" 23)  "      23"
+#+end_src
+
+#+RESULTS:
+:     23
+
++ '-'
+the flag causes any padding inserted on the right
+If both '0' and '-' are present,'0' is ignored.
+#+begin_src emacs-lisp
+(format "%-06d" 23)   "23      "
+#+end_src
+
+#+RESULTS:
+: 23    
+
+#+begin_src emacs-lisp
+(format "%-6d" 23)    "23      "
+#+end_src
+
+#+RESULTS:
+: 23
+
+
+**** format-message
+#+begin_src emacs-lisp
+(format-message string &rest objects)
+#+end_src
+
+#+begin_src emacs-lisp
+(format-message "'asdf'")  'asdf'
+#+end_src
+
+#+RESULTS:
+: ’asdf’
+
+**** 
 

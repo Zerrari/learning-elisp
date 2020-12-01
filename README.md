@@ -1,67 +1,74 @@
 
 # Table of Contents
 
-1.  [Day1](#org482acde)
-    1.  [symbol](#org1f4f36d)
-    2.  [evaluate](#orga77fd30)
-        1.  [how](#orge95b82e)
-    3.  [function](#org19e1cc9)
-        1.  [something basic](#org05cbab2)
-        2.  [set and setq](#org0268a7e)
-        3.  [buffer](#orgec3a10a)
-2.  [Day2](#orgf2f9897)
-    1.  [function](#org3c3a7d5)
-        1.  [defun](#org6b4eecd)
-        2.  [let](#org78d93d6)
-        3.  [if](#orgaeb3134)
-        4.  [save excurison](#org69d3ba7)
-        5.  [beginning of buffer](#orga21807b)
-        6.  [mark-whole-buffer](#orgfd05690)
-        7.  [append-to-buffer](#orgca6ceee)
-3.  [Day3](#org5881f13)
-    1.  [narrowing and widening](#org452836a)
-        1.  [key binding](#orga3d431c)
-    2.  [save-restriction](#org11fd999)
-        1.  [use save-restriction and save-excurison](#org8d933b4)
-    3.  [what-lines](#org2cfcd19)
-        1.  [](#orgb291786)
-    4.  [more about interactive](#org6436f69)
-        1.  [input many arguments](#org21793f8)
-        2.  ["r" stands for a region](#org9880087)
-        3.  ["p" and "P"](#orgb1770f8)
-    5.  [car,cdr and cons](#org5fb0298)
-        1.  [car](#orga22a5e5)
-        2.  [cdr](#orga541f10)
-        3.  [cons](#orgc6c59e8)
-        4.  [nthcdr](#orgbfe7601)
-        5.  [nth](#org0247107)
-        6.  [setcar](#org7539e21)
-        7.  [setcdr](#org927a014)
-4.  [Day4](#orga61dd8d)
-    1.  [defvar](#org69f63df)
-    2.  [loops and recursion](#org2bb52ee)
-        1.  [while](#orgb19c085)
-        2.  [increment loop](#org139db4a)
-        3.  [dolist and dotimes](#org7b5573e)
-5.  [Day5](#org71117a7)
-    1.  [numbers](#org51f0827)
-        1.  [basics](#org619c8de)
-        2.  [type predicates](#org170010a)
-        3.  [comparison of numbers](#orgf324ed5)
-        4.  [conversion](#orgb4e059c)
-        5.  [arithmetic operations](#org8b871fa)
-        6.  [float rounding](#org77d3f41)
-        7.  [bitwise operations](#org7f76494)
-        8.  [mathmatical functions](#org1183e07)
-        9.  [random numbers](#orgdebe96d)
+1.  [Day1](#org6c4089a)
+    1.  [symbol](#org24f4e73)
+    2.  [evaluate](#orgaf597f6)
+        1.  [how](#orgcd0f688)
+    3.  [function](#orgc7cbb81)
+        1.  [something basic](#orgb4264a5)
+        2.  [set and setq](#org9c0b4d5)
+        3.  [buffer](#org2ca5e13)
+2.  [Day2](#orgdf2118d)
+    1.  [function](#orgdb5968f)
+        1.  [defun](#org62cc58a)
+        2.  [let](#orgf88c164)
+        3.  [if](#orgc202cf4)
+        4.  [save excurison](#org90e3bb4)
+        5.  [beginning of buffer](#org6e12633)
+        6.  [mark-whole-buffer](#orgc3c2123)
+        7.  [append-to-buffer](#org7a5763a)
+3.  [Day3](#org42c6ca9)
+    1.  [narrowing and widening](#org1e2c5b3)
+        1.  [key binding](#orgaac7cdb)
+    2.  [save-restriction](#org53e879d)
+        1.  [use save-restriction and save-excurison](#orge63a518)
+    3.  [what-lines](#orgf913786)
+        1.  [](#org8254334)
+    4.  [more about interactive](#org708cba6)
+        1.  [input many arguments](#orgd3a709d)
+        2.  ["r" stands for a region](#orge70c1ed)
+        3.  ["p" and "P"](#org3804e76)
+    5.  [car,cdr and cons](#org48c0895)
+        1.  [car](#org1bc730b)
+        2.  [cdr](#org65f2ebd)
+        3.  [cons](#org389c047)
+        4.  [nthcdr](#org7bbe263)
+        5.  [nth](#orgb238ca6)
+        6.  [setcar](#orgf72465f)
+        7.  [setcdr](#org759507e)
+4.  [Day4](#org8f9fa50)
+    1.  [defvar](#org140785d)
+    2.  [loops and recursion](#org110f555)
+        1.  [while](#org22cd503)
+        2.  [increment loop](#org33afd2a)
+        3.  [dolist and dotimes](#orge8b82d3)
+5.  [Day5](#orgf2b77db)
+    1.  [numbers](#org77bb5c5)
+        1.  [basics](#org78c61ca)
+        2.  [type predicates](#orgca14061)
+        3.  [comparison of numbers](#orgcc51307)
+        4.  [conversion](#orgf53a16d)
+        5.  [arithmetic operations](#org56a5661)
+        6.  [float rounding](#orge40a332)
+        7.  [bitwise operations](#org3067c3a)
+        8.  [mathmatical functions](#orgfa01acb)
+        9.  [random numbers](#org1f660ad)
+6.  [Day6](#org0f30cad)
+    1.  [strings and characters](#org8f90037)
+        1.  [predicates for strings](#orge613dc1)
+        2.  [creating strings](#orge5c45b3)
+        3.  [modifying strings](#org8c96885)
+        4.  [comparison of character and strings](#org1b66bd4)
+        5.  [conversion of characters and strings](#org3e37097)
 
 
-<a id="org482acde"></a>
+<a id="org6c4089a"></a>
 
 # Day1
 
 
-<a id="org1f4f36d"></a>
+<a id="org24f4e73"></a>
 
 ## symbol
 
@@ -83,24 +90,24 @@
 -   atoms which in a pair of parenthese are separated by a white space
 
 
-<a id="orga77fd30"></a>
+<a id="orgaf597f6"></a>
 
 ## evaluate
 
 
-<a id="orge95b82e"></a>
+<a id="orgcd0f688"></a>
 
 ### how
 
 move the cursor after the parenthese,and type **C-x C-e** to evaluate the expression
 
 
-<a id="org19e1cc9"></a>
+<a id="orgc7cbb81"></a>
 
 ## function
 
 
-<a id="org05cbab2"></a>
+<a id="orgb4264a5"></a>
 
 ### something basic
 
@@ -110,7 +117,7 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
     -   side effects(*print something on the screen*)
 
 
-<a id="org0268a7e"></a>
+<a id="org9c0b4d5"></a>
 
 ### set and setq
 
@@ -137,7 +144,7 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
     So it will return a error message.
 
 
-<a id="orgec3a10a"></a>
+<a id="org2ca5e13"></a>
 
 ### buffer
 
@@ -172,17 +179,17 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
         (switch-to-buffer (other-buffer))
 
 
-<a id="orgf2f9897"></a>
+<a id="orgdf2118d"></a>
 
 # Day2
 
 
-<a id="org3c3a7d5"></a>
+<a id="orgdb5968f"></a>
 
 ## function
 
 
-<a id="org6b4eecd"></a>
+<a id="org62cc58a"></a>
 
 ### defun
 
@@ -203,7 +210,7 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
 -   **p** stands for prefix which means you should type before invoke a function
 
 
-<a id="org78d93d6"></a>
+<a id="orgf88c164"></a>
 
 ### let
 
@@ -228,7 +235,7 @@ unintialized variables will be bond to **nil**
           (message "the fruit is %s" one))
 
 
-<a id="orgaeb3134"></a>
+<a id="orgc202cf4"></a>
 
 ### if
 
@@ -243,7 +250,7 @@ unintialized variables will be bond to **nil**
 -   the **empty** list is falsehood
 
 
-<a id="org69d3ba7"></a>
+<a id="org90e3bb4"></a>
 
 ### save excurison
 
@@ -279,7 +286,7 @@ save the positon of cursor(after evaluating the function,it return the initial l
           body...)
 
 
-<a id="orga21807b"></a>
+<a id="org6e12633"></a>
 
 ### beginning of buffer
 
@@ -293,7 +300,7 @@ save the positon of cursor(after evaluating the function,it return the initial l
          (goto-char (point-min)))
 
 
-<a id="orgfd05690"></a>
+<a id="orgc3c2123"></a>
 
 ### mark-whole-buffer
 
@@ -306,26 +313,26 @@ save the positon of cursor(after evaluating the function,it return the initial l
     (z-mark-whole-buffer)
 
 
-<a id="orgca6ceee"></a>
+<a id="org7a5763a"></a>
 
 ### append-to-buffer
 
 insert-buffer-substring
 
 
-<a id="org5881f13"></a>
+<a id="org42c6ca9"></a>
 
 # Day3
 
 
-<a id="org452836a"></a>
+<a id="org1e2c5b3"></a>
 
 ## narrowing and widening
 
 with narrowing, the rest of buffer is invisible
 
 
-<a id="orga3d431c"></a>
+<a id="orgaac7cdb"></a>
 
 ### key binding
 
@@ -333,12 +340,12 @@ with narrowing, the rest of buffer is invisible
 **C-x n w** for *widen*
 
 
-<a id="org11fd999"></a>
+<a id="org53e879d"></a>
 
 ## save-restriction
 
 
-<a id="org8d933b4"></a>
+<a id="orge63a518"></a>
 
 ### use save-restriction and save-excurison
 
@@ -352,12 +359,12 @@ with narrowing, the rest of buffer is invisible
       body))
 
 
-<a id="org2cfcd19"></a>
+<a id="orgf913786"></a>
 
 ## what-lines
 
 
-<a id="orgb291786"></a>
+<a id="org8254334"></a>
 
 ### 
 
@@ -371,14 +378,14 @@ with narrowing, the rest of buffer is invisible
     	(message "The line number is %d" lines)))))
 
 
-<a id="org6436f69"></a>
+<a id="org708cba6"></a>
 
 ## more about interactive
 
 Sepreate string with **\n**
 
 
-<a id="org21793f8"></a>
+<a id="orgd3a709d"></a>
 
 ### input many arguments
 
@@ -390,7 +397,7 @@ Sepreate string with **\n**
       (message "name:%s age:%d country:%s" name age country))
 
 
-<a id="org9880087"></a>
+<a id="orge70c1ed"></a>
 
 ### "r" stands for a region
 
@@ -399,7 +406,7 @@ Sepreate string with **\n**
       (message "start:%d end:%d" start end))
 
 
-<a id="orgb1770f8"></a>
+<a id="org3804e76"></a>
 
 ### "p" and "P"
 
@@ -414,7 +421,7 @@ invoke a function by typing **C-u prefix-argument M-x fun-name**
           (message "%d" num))
 
 
-<a id="org5fb0298"></a>
+<a id="org48c0895"></a>
 
 ## car,cdr and cons
 
@@ -422,7 +429,7 @@ invoke a function by typing **C-u prefix-argument M-x fun-name**
 -   car and cdr to take apart lists
 
 
-<a id="orga22a5e5"></a>
+<a id="org1bc730b"></a>
 
 ### car
 
@@ -431,7 +438,7 @@ the car of the list is the first item
     (car '(tiger lion))
 
 
-<a id="orga541f10"></a>
+<a id="org65f2ebd"></a>
 
 ### cdr
 
@@ -441,14 +448,14 @@ returns the rest of the list
     (cdr '(tiger lion cat))
 
 
-<a id="orgc6c59e8"></a>
+<a id="org389c047"></a>
 
 ### cons
 
     (cons 'tiger '(lion cat))
 
 
-<a id="orgbfe7601"></a>
+<a id="org7bbe263"></a>
 
 ### nthcdr
 
@@ -459,7 +466,7 @@ use cdr repeatedly
     (nthcdr 3 '(tiger lion cat))
 
 
-<a id="org0247107"></a>
+<a id="orgb238ca6"></a>
 
 ### nth
 
@@ -468,7 +475,7 @@ use car repeatedly
     (nth 1 '(lion tiger cat))
 
 
-<a id="org7539e21"></a>
+<a id="orgf72465f"></a>
 
 ### setcar
 
@@ -479,7 +486,7 @@ set the **car** a new value
     animals
 
 
-<a id="org927a014"></a>
+<a id="org759507e"></a>
 
 ### setcdr
 
@@ -490,12 +497,12 @@ set the **cdr** a new value
     animals
 
 
-<a id="orga61dd8d"></a>
+<a id="org8f9fa50"></a>
 
 # Day4
 
 
-<a id="org69f63df"></a>
+<a id="org140785d"></a>
 
 ## defvar
 
@@ -507,12 +514,12 @@ set the **cdr** a new value
     num
 
 
-<a id="org2bb52ee"></a>
+<a id="org110f555"></a>
 
 ## loops and recursion
 
 
-<a id="orgb19c085"></a>
+<a id="org22cd503"></a>
 
 ### while
 
@@ -524,7 +531,7 @@ set the **cdr** a new value
     (print-list-element animals)nil
 
 
-<a id="org139db4a"></a>
+<a id="org33afd2a"></a>
 
 ### increment loop
 
@@ -537,7 +544,7 @@ use counter to stop a loop
        (setq count (+ 1 count))))
 
 
-<a id="org7b5573e"></a>
+<a id="orge8b82d3"></a>
 
 ### dolist and dotimes
 
@@ -563,17 +570,17 @@ use counter to stop a loop
               (message "%d " number)))
 
 
-<a id="org71117a7"></a>
+<a id="orgf2b77db"></a>
 
 # Day5
 
 
-<a id="org51f0827"></a>
+<a id="org77bb5c5"></a>
 
 ## numbers
 
 
-<a id="org619c8de"></a>
+<a id="org78c61ca"></a>
 
 ### basics
 
@@ -628,7 +635,7 @@ use counter to stop a loop
         (logb 10) 3
 
 
-<a id="org170010a"></a>
+<a id="orgca14061"></a>
 
 ### type predicates
 
@@ -660,7 +667,7 @@ check if it is a natural number
     (zerop 0)  t
 
 
-<a id="orgf324ed5"></a>
+<a id="orgcc51307"></a>
 
 ### comparison of numbers
 
@@ -702,7 +709,7 @@ check if it is a natural number
         (abs -3)
 
 
-<a id="orgb4e059c"></a>
+<a id="orgf53a16d"></a>
 
 ### conversion
 
@@ -750,7 +757,7 @@ check if it is a natural number
         (round 1.5)
 
 
-<a id="org8b871fa"></a>
+<a id="org56a5661"></a>
 
 ### arithmetic operations
 
@@ -803,7 +810,7 @@ check if it is a natural number
         (mod 9 -4)
 
 
-<a id="org77d3f41"></a>
+<a id="orge40a332"></a>
 
 ### float rounding
 
@@ -818,7 +825,7 @@ return the float whose value is nearby integer
 -   fround
 
 
-<a id="org7f76494"></a>
+<a id="org3067c3a"></a>
 
 ### bitwise operations
 
@@ -871,7 +878,7 @@ return the float whose value is nearby integer
         (logcount -43)
 
 
-<a id="org1183e07"></a>
+<a id="orgfa01acb"></a>
 
 ### mathmatical functions
 
@@ -914,7 +921,7 @@ return x rasied to the power y
     float-pi
 
 
-<a id="orgdebe96d"></a>
+<a id="org1f660ad"></a>
 
 ### random numbers
 
@@ -924,4 +931,338 @@ return x rasied to the power y
     
         
         (random 5)
+
+
+<a id="org0f30cad"></a>
+
+# Day6
+
+
+<a id="org8f90037"></a>
+
+## strings and characters
+
+
+<a id="orge613dc1"></a>
+
+### predicates for strings
+
+1.  stringp
+
+    This function returns t if object is a string, nil otherwise
+    
+        (stringp "asd")  t
+    
+        (stringp nil)  nil
+
+2.  string-or-null-p
+
+    This function returns t if object is a string or nil. It returns nil otherwise.
+    
+        (string-or-null-p nil) t
+
+3.  char-or-string-p
+
+    This function returns t if object is a string or a character (i.e., an integer), nil otherwise.
+    
+        (char-or-string-p ?a) t
+    
+        (char-or-string-p "asdf") t
+
+
+<a id="orge5c45b3"></a>
+
+### creating strings
+
+1.  make-string
+
+        (make-string count character &optional multibyte)
+    
+        (make-string 5 ?x)  "xxxxx"
+
+2.  string
+
+        (string &rest characters)
+    
+        (string ?a ?d) "ad"
+
+3.  substring
+
+    -   include the start,exclude the end
+    -   a negative argument is accpeted (-1 stands for the last index)
+    -   default start stands for 0,end stands for the length of the string
+    
+        (substring string &optional start end)
+    
+        (substring "asdfg" 1)    "sdfg"
+    
+        (substring "asdfg" -2 -1)  "f"
+
+4.  concat
+
+        (concat &rest sequences)
+    
+        (concat "sda" "sad") "sdasad"
+    
+    if concat receives no argun=ments,it returns empty string.
+    
+        (concat)  ""
+
+5.  split-string
+
+        (split-string string &optional separators omit-nulls trim)
+    
+        (split-string "hello world")  "hello" "world"
+    
+        (split-string "  hello world   ")
+
+
+<a id="org8c96885"></a>
+
+### modifying strings
+
+1.  store-substring
+
+        (store-substring string idx obj)
+    
+        (store-substring "asdfg" 1 "asd")  aasdg
+
+2.  aset
+
+        (aset string idx char)
+    
+        ?????(aset "asdfg" 1 ?a)
+
+3.  clear-string
+
+    -   It clears its contents to zero
+    
+        (clear-string string)
+    
+        (clear-string "asdad") nil
+
+
+<a id="org1b66bd4"></a>
+
+### comparison of character and strings
+
+    (char-equal character1 character2)
+
+    (char-equal ?a ?c) nil
+
+If case-fold-search is non-nil,this function ignores differences in case
+
+    (char-equal ?a ?A)   t
+    (setq case-fold-search nil)
+    (char-equal ?a ?A)   nil
+
+1.  string= / string-equal
+
+        (string= string1 string2)
+    
+        (string= "asdf" "asdf")  t
+    
+        (string= "asdf" "asd")  nil
+
+2.  string< / string-lessp
+
+    -   a string has no characters which is less than any other string
+    
+        (string< string1 string2)
+    
+        (string< "" "sad")  t
+    
+        (string< "sad" "sadf")  t
+
+3.  string-version-lessp
+
+    -   It trests sequences of numbers as if they comprised a base-ten number,then compare them.
+    
+        (string-version-lessp string1 string2)
+    
+        (string-version-lessp "12" "1") nil
+    
+        (string-version-lessp "foo2.png" "foo12.png")   t
+
+4.  string-prefix-p
+
+    -   This function returns non-nil,if string1 is a prefix of string2.
+    -   If the ignore-case is non-nil,the comparison ignores case differences.
+    
+        (string-prefix-p string1 string2 &optional ignore-case)
+    
+        (string-prefix-p "asdf" "asdfg" 1)  t
+    
+        (string-prefix-p "asdf" "ASDFF" nil) nil
+
+5.  string-suffix-p
+
+        (string-suffix-p "asdf" "AASDF" 1) t
+    
+        (string-suffix-p "asdf" "AASDF") nil
+
+6.  compare-strings
+
+    -   If the parts of strings match,it returns t
+    -   Otherwise,the value is an integer which how many leading characters agree.
+    -   The sign is negative if the string1 is less.
+    
+        (compare-strings string1 start1 end1 string2 start2 end2 &optional ignore-case)
+    
+        (compare-strings "asdfg" 0 3 "dfgasd" 3 6)  t
+
+7.  string-distance
+
+        (string-distance string1 string2 &optional bytecompare)
+    
+    -   It returns the Levenshtein distance.
+    
+        (string-distance "asdf" "asd")  1
+
+
+<a id="org3e37097"></a>
+
+### conversion of characters and strings
+
+1.  number-to-string
+
+        (number-to-string number)
+    
+        (number-to-string 123)  "123"
+    
+        (number-to-string -23)  "-23"
+
+2.  string-to-number
+
+        (string-to-number string &optional base)
+    
+        (string-to-number "1234")  1234
+    
+        (string-to-number "asd123")  0
+    
+        (string-to-number "      23 apples")  23
+    
+        (string-to-number "23" 8) 19
+
+3.  char-to-string
+
+        (char-to-string character)
+    
+        (char-to-string ?a)  "a"
+
+4.  (string-to-char)
+
+    -   The function returns the first character of the string.
+    -   If the string is empty,it returns 0.
+    
+        (string-to-char string)
+    
+        (string-to-char "ASD") ?A
+    
+        (string-to-char "") 0
+
+5.  formatting strings
+
+        (format string &rest objects)
+    
+        (format "ASD")  "ASD"
+    
+    1.  valid format specifications
+    
+        -   %s
+        
+        print without "" 
+        
+            (format "This is an %s" "apple") "This is an apple"
+        
+        -   %S
+        
+        print with "" and \\
+        
+            (format "This is an %S" "apple")  "This is an \"apple\""
+        
+        -   %o
+        
+        replace the specification with the base-eight number
+        It also accepts float point as an integer,droppong any fraction
+        
+            (format "%o" 23)  "27"
+        
+            (format "%o" 23.5)  "27"
+        
+        -   %x
+        
+        base-sixteen
+        with lower case
+        
+            (format "%x" 29)  "1d"
+        
+        -   %X
+        
+        base-sixteen 
+        with upper case
+        
+            (format "%X" 29)  "1D"
+        
+        -   %c
+        
+        repalce the specification with the character
+        
+            (format "This is %c" ?a) "This is a"
+        
+        -   %f
+        
+            (format "%f" 13.5)  "13.500000"
+        
+        -   %%
+        
+        replace the specification with single "%"
+    
+    2.  field numbers in specification
+    
+        It causes the format specification to convert the argument with the given number.
+        
+            (format "%s %1$s %% %3$s" "x" "y" "z")  "x x % z"
+    
+    3.  flag characters
+    
+        After the '%' and field numbers,ypu can put flag characters.
+        
+        -   '+'
+        
+        a plus sign before a nonnegative number
+        
+            (format "%+d" 23)   "+23"
+        
+        -   '#'
+        
+            (format "%#o" 23)   "027"
+        
+            (format "%#x" 29)  "0x1d"
+        
+        -   '0'
+        
+        the padding consists of '0' characters instead of spaces
+        this flag is ingored for specification like "%s" "%S" or "%c"
+        
+            (format "%06d" 23) "000023"
+        
+            (format "%6d" 23)  "      23"
+        
+        -   '-'
+        
+        the flag causes any padding inserted on the right
+        If both '0' and '-' are present,'0' is ignored.
+        
+            (format "%-06d" 23)   "23      "
+        
+            (format "%-6d" 23)    "23      "
+
+6.  format-message
+
+        (format-message string &rest objects)
+    
+        (format-message "'asdf'")  'asdf'
+
+7.  
 
