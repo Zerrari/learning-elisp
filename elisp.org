@@ -1727,5 +1727,437 @@ If both '0' and '-' are present,'0' is ignored.
 #+RESULTS:
 : ’asdf’
 
-**** 
+
+
+
+* Day7
+** regular expressions
+*** special characters
++ '.'
+It matches any single character except a newline
+
++ '*'
+It is a postfix operator that matches preceding expression repetitively as many times as possible.
+
++ '+'
+It is a postfix operator that matches preceding expression at least once.
+
++ '?'
+It is a postfix operator that matches preceding expression either once or not at all.
+
++ '*?','+?','??'
+It matches the smallest substring.
+
++ '[...]'
+It is a character alternative.
+The characters between the brackets are what this character alternative can match.
+'c[ad]*r' matches "cadr","car","cr" etc.
+
++ '[^...]'
+It matches any character except the specified ones
+
++ '^'
+It matches the empty string,but only on the beginning of the line.
+
++ '$'
+It is similiar to the '^',but on the end of the line.
+
++ '\'
+It quotes the special characters(including '\') and introduces additional special constructs.
+*** character classes
++ '[:ascii:]'
+This matches any ASCII character.
+
++ '[:alnum:]'
+This matches any letter or digit.
+
++ '[:digit:]'
+This matches '0' through '9'.
+
++ '[:lower:]'
+This matches any lower-case letter.
+If case-fold-search is non-nil,it also matches any upper-case letter.
+
++ '[:upper:]'
+It is similiar with '[:upper:]'.
+
++ '[:nonascii:]'
+It matches any non-ASCII character.
+
++ '[:xdigit:]'
+It matches any hexadecimal digits.
+
++ '[:punct:]'
+It matches any punctuation character.
+
+#+begin_src emacs-lisp
+"[[:ascii:]]"
+#+end_src
+*** backslash constructs
++ '\|'
+'a\|b' matches either "a" or "b" but on other string.
+
++ '\{m\}'
+It is a postfix operator that repeats the previous pattern exactly m times.
+#+begin_src emacs-lisp
+'x\{5\}' matches 'xxxxx'
+#+end_src
+
++  '\{m,n\}'
+It is a postfix operator that repeats the previous pattern with a minimum of m and a maximum of n.
+If m is omitted,the minimun is 0.
+If n is omitted,there is no maximum.
+
++ '\(...\)'
+1. To enclose the set of '\|' alternatives
+#+begin_src emacs-lisp
+'\(bar\|foo\)x'
+it matches either 'barx' or 'foox'
+#+end_src
+
+2. To enclose a complicated expression for the postfix operatores '*','+' or '?'
+#+begin_src emacs-lisp
+'ba\(na\)*'
+it matches 'ba','bana','banana' and so on
+#+end_src
+
+* Day8
+** strings and characters
+*** case conversion
+**** downcase
+#+begin_src emacs-lisp
+(downcase string-or-char)
+#+end_src
+
+#+begin_src emacs-lisp
+(downcase ?Z)     z/122
+#+end_src
+
+#+RESULTS:
+: 122
+
+#+begin_src emacs-lisp
+(downcase "WQER")   "wqer"
+#+end_src
+
+#+RESULTS:
+: wqer
+**** upcase
+#+begin_src emacs-lisp
+(upcase string-or-char)
+#+end_src
+
+#+begin_src emacs-lisp
+(upcase ?z)    Z/90
+#+end_src
+
+#+RESULTS:
+: 90
+
+#+begin_src emacs-lisp
+(upcase "asdf")   "ASDF"
+#+end_src
+
+#+RESULTS:
+: ASDF
+**** capitalize
+This function capitalize the string or char.
+That means the first letter of every word converted to the upcase,
+and the rest of the word converted to the downcase.
+#+begin_src emacs-lisp
+(capitalize string-or-char)
+#+end_src
+
+#+begin_src emacs-lisp
+(capitalize ?z) Z
+#+end_src
+
+#+RESULTS:
+: 90
+
+#+begin_src emacs-lisp
+(capitalize "this is an apple") "This Is An Apple"
+#+end_src
+
+#+RESULTS:
+: This Is An Apple
+
+#+begin_src emacs-lisp
+(capitalize "thIS is AN APPLe") This Is An Apple
+#+end_src
+
+#+RESULTS:
+: This Is An Apple
+**** upcase-initials
+It cpnverts the initials of ever word to the upcase,without any change to the rest of every word.
+#+begin_src emacs-lisp
+(upcase-initials string-or-char)
+#+end_src
+
+#+begin_src emacs-lisp
+(upcase-initials "THIS iS an apple.") THIS IS An Apple.
+#+end_src
+
+#+RESULTS:
+: THIS IS An Apple.
+
+*** lists
+**** the different lists
+***** proper lists
+The cdr of the last cons cell in a list is 'nil'.
+***** circular lists
+***** dotted lists
+The cdr of the last cons cell in a list is come value other than 'nil'.
+
+**** predicates on lists
+***** consp
+It return t if object is a cons cell.     
+#+begin_src emacs-lisp
+(consp object)
+#+end_src
+
+#+begin_src emacs-lisp
+(consp '(rose cat))      t
+#+end_src
+
+#+RESULTS:
+: t
+
+#+begin_src emacs-lisp
+(consp (cons 'cat 1))  t
+#+end_src
+
+#+RESULTS:
+: t
+
+#+begin_src emacs-lisp
+(consp '(rose cat dog))            t
+(consp (list 'rose 'cat 'dog))     t
+(consp ())                         nil
+#+end_src
+
+#+RESULTS:
+: t
+***** listp
+It returns t if the object is a cons cell or nil.
+#+begin_src emacs-lisp
+(listp (cons 1 2))   t
+(listp ())           t
+#+end_src
+***** nlistp
+It retuns t if the object is not a list.
+#+begin_src emacs-lisp
+(nlistp 3)        t
+#+end_src
+***** null
+It returns t  if the object is nil.
+#+begin_src emacs-lisp
+(null ())         t
+(null '())        t
+#+end_src
+***** proper-list-p
+It returns the length of the list,if it is a proper list.
+Else it returns nil.
+#+begin_src emacs-lisp
+(proper-list-p '(1 2 34 4))       4
+(proper-list-p '(1 2 . 3))        nil
+#+end_src
+***** atom
+It returns t if the object is an atom.
+All objects except cons cell are atoms.
+#+begin_src emacs-lisp
+(atom '(1 23 3))    nil
+(atom "asd")        t
+(atom 1)            t
+#+end_src
+**** accessing elements of lists
+***** car
+It returns the first slot of the cons cell.
+#+begin_src emacs-lisp
+(car cons-cell)
+#+end_src
+
+#+begin_src emacs-lisp
+(car '(1 2 3 4))    1
+#+end_src
+***** cdr
+It returns the second slot of the cons cell.
+#+begin_src emacs-lisp
+(cdr cons-cell)
+#+end_src
+
+#+begin_src emacs-lisp
+(cdr '( 1 2 3))    (2 3)
+#+end_src
+***** car-safe
+It lets you take the car of the object  while avoiding errors for other types.
+#+begin_src emacs-lisp
+(car-safe object)
+#+end_src
+
+#+begin_src emacs-lisp
+(car-safe 1)    return nil and no response of error
+(car-safe '(1 2 3))    1
+#+end_src
+***** cdr-safe
+It is similiar to the car-safe.
+***** pop
+It returns the car of the list,and saves the cdr of the list to the listname.
+destructive function
+#+begin_src emacs-lisp
+(pop listname)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq animals '(rose dog cat))  (rose dog car)
+(pop animals)                    "rose"
+animals                          (dog cat)
+#+end_src
+***** nth
+It returns the nth elsement of the list.
+If the length of the list is n or less,it returns nil.
+#+begin_src emacs-lisp
+(nth n list)
+#+end_src
+
+#+begin_src emacs-lisp
+(nth 2 '(1 2 3 4))       3
+#+end_src
+***** nthcdr
+It returns the nth cdr of the list.
+if n is 0,it returns the list.
+If the length is  or less,it returns nil.
+#+begin_src emacs-lisp
+(nthcdr n list)
+#+end_src
+
+#+begin_src emacs-lisp
+(nthcdr 2 '(1 2 3))     (3)
+(nthcdr 0 '(1 2 3))     (1 2 3)
+(nthcdr 3 '( 1 2 3))    nil
+#+end_src
+***** last
+It returns the last link of the list.
+If n is "non-nil", it returns the nth-to-last link.
+#+begin_src emacs-lisp
+(last list &optional n)
+#+end_src
+
+#+begin_src emacs-lisp
+(last '(1 2 3))        (3)
+(last '(1 2 3) 2)      (2 3)
+(last '(1 2 3) 4)      (1 2 3)
+#+end_src
+***** safe-length
+It returns the length of the object while avoiding errors of other types.
+It returns 0,if the object is not nil or a cons cell.
+#+begin_src emacs-lisp
+(safe-length 1)           0
+(safe-length '( 1 2 3))   3
+
+#+end_src
+***** caar,cddr,cadr
+#+begin_src emacs-lisp
+(cadr '(1 2 3))        2
+(car (cdr '(1 2 3)))   2
+#+end_src
+***** butlast
+It returns the list without the last element
+If n is greater than 0,it makes a copy of the list so as not to damage the original list.
+
+#+begin_src emacs-lisp
+(butlast x &optional n)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq animals '(cat dog rose))     (cat dog rose)
+(butlast animals)                 (cat dog)
+animals                          (cat dog rose lily)
+(setq animals '(cat dog rose lily)) (cat dog rose lily)
+(butlast animals 2)                 (cat dog)
+animals                             (cat dog rose lily)
+#+end_src
+
+#+begin_src emacs-lisp
+(butlast '(1 2 3))         (1 2)
+(butlast '(1 2 3 4 5) 2)   (1 2 3)
+#+end_src
+***** nbutlast
+This is version of butlast by destructively modifying the list.
+#+begin_src emacs-lisp
+(setq animals '(cat dog rose lily)) (cat dog rose lily)
+(nbutlast animals 2)                 (cat dog)
+animals                             (cat dog)
+#+end_src
+**** building cons cells and lists
+***** cons
+#+begin_src emacs-lisp
+(cons object1 object2)
+#+end_src
+
+#+begin_src emacs-lisp
+(cons 1 2)   (1 . 2)
+(cons 1 '(2)) (1 2)
+#+end_src
+***** list
+#+begin_src emacs-lisp
+(list &rest objects)
+#+end_src
+
+#+begin_src emacs-lisp
+(list 1 2 3 4 5 ) (1 2 3 4 5)
+#+end_src
+***** make-list
+#+begin_src emacs-lisp
+(make-list length object)
+#+end_src
+
+#+begin_src emacs-lisp
+(make-list 3 'x)    (x x x)
+#+end_src
+***** append
+It is not a destructive function.
+#+begin_src emacs-lisp
+(append &rest sequences)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq list '(1 2 3))         (1 2 3)
+(append list '(4 5))         (1 2 3 4 5)
+list                         (1 2 3)
+#+end_src
+***** copy-tree
+It returns a copy of the tree.
+It the vecp is non-nil,it also copies the vector.
+
+#+begin_src emacs-lisp
+(copy-tree tree &optional vecp)
+#+end_src
+
+#+begin_src emacs-lisp
+(copy-tree '(1 2 3))     (1 2 3)
+#+end_src
+***** flatten-tree
+It returns a tree with the elements in the same order.
+#+begin_src emacs-lisp
+(flatten-tree tree)
+#+end_src
+
+#+begin_src emacs-lisp
+(flatten-tree '(1 2 3 (4 5) (6 (7 . 8))))        (1 2 3 4 5 6 7 8)
+#+end_src
+***** number-sequence
+It returns a sequence of numbers starting at the *from*,increasing by the *separation* and ending at pr before *to*.
+default separation is 1.
+#+begin_src emacs-lisp
+(number-sequence from &optional to separation)
+#+end_src
+
+#+begin_src emacs-lisp
+(number-sequence 1 4)  (1 2 3 4)    
+(number-sequence 4 1 -1) (4 3 2 1)
+(number-sequence 1 6 2)  (1 3 5)
+#+end_src
+***** modifying list variabels
+
 

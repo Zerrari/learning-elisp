@@ -1,74 +1,83 @@
 
 # Table of Contents
 
-1.  [Day1](#org6c4089a)
-    1.  [symbol](#org24f4e73)
-    2.  [evaluate](#orgaf597f6)
-        1.  [how](#orgcd0f688)
-    3.  [function](#orgc7cbb81)
-        1.  [something basic](#orgb4264a5)
-        2.  [set and setq](#org9c0b4d5)
-        3.  [buffer](#org2ca5e13)
-2.  [Day2](#orgdf2118d)
-    1.  [function](#orgdb5968f)
-        1.  [defun](#org62cc58a)
-        2.  [let](#orgf88c164)
-        3.  [if](#orgc202cf4)
-        4.  [save excurison](#org90e3bb4)
-        5.  [beginning of buffer](#org6e12633)
-        6.  [mark-whole-buffer](#orgc3c2123)
-        7.  [append-to-buffer](#org7a5763a)
-3.  [Day3](#org42c6ca9)
-    1.  [narrowing and widening](#org1e2c5b3)
-        1.  [key binding](#orgaac7cdb)
-    2.  [save-restriction](#org53e879d)
-        1.  [use save-restriction and save-excurison](#orge63a518)
-    3.  [what-lines](#orgf913786)
-        1.  [](#org8254334)
-    4.  [more about interactive](#org708cba6)
-        1.  [input many arguments](#orgd3a709d)
-        2.  ["r" stands for a region](#orge70c1ed)
-        3.  ["p" and "P"](#org3804e76)
-    5.  [car,cdr and cons](#org48c0895)
-        1.  [car](#org1bc730b)
-        2.  [cdr](#org65f2ebd)
-        3.  [cons](#org389c047)
-        4.  [nthcdr](#org7bbe263)
-        5.  [nth](#orgb238ca6)
-        6.  [setcar](#orgf72465f)
-        7.  [setcdr](#org759507e)
-4.  [Day4](#org8f9fa50)
-    1.  [defvar](#org140785d)
-    2.  [loops and recursion](#org110f555)
-        1.  [while](#org22cd503)
-        2.  [increment loop](#org33afd2a)
-        3.  [dolist and dotimes](#orge8b82d3)
-5.  [Day5](#orgf2b77db)
-    1.  [numbers](#org77bb5c5)
-        1.  [basics](#org78c61ca)
-        2.  [type predicates](#orgca14061)
-        3.  [comparison of numbers](#orgcc51307)
-        4.  [conversion](#orgf53a16d)
-        5.  [arithmetic operations](#org56a5661)
-        6.  [float rounding](#orge40a332)
-        7.  [bitwise operations](#org3067c3a)
-        8.  [mathmatical functions](#orgfa01acb)
-        9.  [random numbers](#org1f660ad)
-6.  [Day6](#org0f30cad)
-    1.  [strings and characters](#org8f90037)
-        1.  [predicates for strings](#orge613dc1)
-        2.  [creating strings](#orge5c45b3)
-        3.  [modifying strings](#org8c96885)
-        4.  [comparison of character and strings](#org1b66bd4)
-        5.  [conversion of characters and strings](#org3e37097)
+1.  [Day1](#orgd74790b)
+    1.  [symbol](#org2aa1284)
+    2.  [evaluate](#org6443fd1)
+        1.  [how](#org7d62543)
+    3.  [function](#org92cfb72)
+        1.  [something basic](#org65a35c6)
+        2.  [set and setq](#org7432e82)
+        3.  [buffer](#orgbcfc47e)
+2.  [Day2](#org9db2431)
+    1.  [function](#org99f11eb)
+        1.  [defun](#org59feb21)
+        2.  [let](#org9a0dec6)
+        3.  [if](#org90059c0)
+        4.  [save excurison](#orgf976d81)
+        5.  [beginning of buffer](#orge107d52)
+        6.  [mark-whole-buffer](#org5aa01a1)
+        7.  [append-to-buffer](#org5660118)
+3.  [Day3](#org34f0ebf)
+    1.  [narrowing and widening](#org55346ab)
+        1.  [key binding](#orgaf7f5bc)
+    2.  [save-restriction](#org52db7b7)
+        1.  [use save-restriction and save-excurison](#org0ca9e3a)
+    3.  [what-lines](#orga6686ff)
+        1.  [](#org60285e4)
+    4.  [more about interactive](#org991b46c)
+        1.  [input many arguments](#orgc614122)
+        2.  ["r" stands for a region](#org8576f66)
+        3.  ["p" and "P"](#orgf54a4ac)
+    5.  [car,cdr and cons](#orgfb65c9d)
+        1.  [car](#orgf4c9dee)
+        2.  [cdr](#orgf013d74)
+        3.  [cons](#org9c1515a)
+        4.  [nthcdr](#org2ddaa2e)
+        5.  [nth](#org9e379c1)
+        6.  [setcar](#org6a5b55d)
+        7.  [setcdr](#orge70b74c)
+4.  [Day4](#orgb911f77)
+    1.  [defvar](#org56a1f7a)
+    2.  [loops and recursion](#org8b8c713)
+        1.  [while](#org9e82a04)
+        2.  [increment loop](#org65ce1e4)
+        3.  [dolist and dotimes](#org426fe5d)
+5.  [Day5](#org093afec)
+    1.  [numbers](#org2047417)
+        1.  [basics](#orga06c132)
+        2.  [type predicates](#org08aa918)
+        3.  [comparison of numbers](#org7bc06de)
+        4.  [conversion](#org3e28c51)
+        5.  [arithmetic operations](#org886e627)
+        6.  [float rounding](#org7d61be6)
+        7.  [bitwise operations](#org8fb70ca)
+        8.  [mathmatical functions](#orgf1217a6)
+        9.  [random numbers](#orgbf2e11c)
+6.  [Day6](#org6b2dab5)
+    1.  [strings and characters](#org2267884)
+        1.  [predicates for strings](#org9401096)
+        2.  [creating strings](#org50c5f3d)
+        3.  [modifying strings](#org40453db)
+        4.  [comparison of character and strings](#org57811a4)
+        5.  [conversion of characters and strings](#orgbbac5d6)
+7.  [Day7](#org5a57f31)
+    1.  [regular expressions](#orgb7d230e)
+        1.  [special characters](#org76ec07d)
+        2.  [character classes](#org1487fea)
+        3.  [backslash constructs](#org8fa7fd5)
+8.  [Day8](#orgfe38c34)
+    1.  [strings and characters](#orgbaab0e2)
+        1.  [case conversion](#org632d6dd)
+        2.  [lists](#org0aec2da)
 
 
-<a id="org6c4089a"></a>
+<a id="orgd74790b"></a>
 
 # Day1
 
 
-<a id="org24f4e73"></a>
+<a id="org2aa1284"></a>
 
 ## symbol
 
@@ -90,24 +99,24 @@
 -   atoms which in a pair of parenthese are separated by a white space
 
 
-<a id="orgaf597f6"></a>
+<a id="org6443fd1"></a>
 
 ## evaluate
 
 
-<a id="orgcd0f688"></a>
+<a id="org7d62543"></a>
 
 ### how
 
 move the cursor after the parenthese,and type **C-x C-e** to evaluate the expression
 
 
-<a id="orgc7cbb81"></a>
+<a id="org92cfb72"></a>
 
 ## function
 
 
-<a id="orgb4264a5"></a>
+<a id="org65a35c6"></a>
 
 ### something basic
 
@@ -117,7 +126,7 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
     -   side effects(*print something on the screen*)
 
 
-<a id="org9c0b4d5"></a>
+<a id="org7432e82"></a>
 
 ### set and setq
 
@@ -144,7 +153,7 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
     So it will return a error message.
 
 
-<a id="org2ca5e13"></a>
+<a id="orgbcfc47e"></a>
 
 ### buffer
 
@@ -179,17 +188,17 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
         (switch-to-buffer (other-buffer))
 
 
-<a id="orgdf2118d"></a>
+<a id="org9db2431"></a>
 
 # Day2
 
 
-<a id="orgdb5968f"></a>
+<a id="org99f11eb"></a>
 
 ## function
 
 
-<a id="org62cc58a"></a>
+<a id="org59feb21"></a>
 
 ### defun
 
@@ -210,7 +219,7 @@ move the cursor after the parenthese,and type **C-x C-e** to evaluate the expres
 -   **p** stands for prefix which means you should type before invoke a function
 
 
-<a id="orgf88c164"></a>
+<a id="org9a0dec6"></a>
 
 ### let
 
@@ -235,7 +244,7 @@ unintialized variables will be bond to **nil**
           (message "the fruit is %s" one))
 
 
-<a id="orgc202cf4"></a>
+<a id="org90059c0"></a>
 
 ### if
 
@@ -250,7 +259,7 @@ unintialized variables will be bond to **nil**
 -   the **empty** list is falsehood
 
 
-<a id="org90e3bb4"></a>
+<a id="orgf976d81"></a>
 
 ### save excurison
 
@@ -286,7 +295,7 @@ save the positon of cursor(after evaluating the function,it return the initial l
           body...)
 
 
-<a id="org6e12633"></a>
+<a id="orge107d52"></a>
 
 ### beginning of buffer
 
@@ -300,7 +309,7 @@ save the positon of cursor(after evaluating the function,it return the initial l
          (goto-char (point-min)))
 
 
-<a id="orgc3c2123"></a>
+<a id="org5aa01a1"></a>
 
 ### mark-whole-buffer
 
@@ -313,26 +322,26 @@ save the positon of cursor(after evaluating the function,it return the initial l
     (z-mark-whole-buffer)
 
 
-<a id="org7a5763a"></a>
+<a id="org5660118"></a>
 
 ### append-to-buffer
 
 insert-buffer-substring
 
 
-<a id="org42c6ca9"></a>
+<a id="org34f0ebf"></a>
 
 # Day3
 
 
-<a id="org1e2c5b3"></a>
+<a id="org55346ab"></a>
 
 ## narrowing and widening
 
 with narrowing, the rest of buffer is invisible
 
 
-<a id="orgaac7cdb"></a>
+<a id="orgaf7f5bc"></a>
 
 ### key binding
 
@@ -340,12 +349,12 @@ with narrowing, the rest of buffer is invisible
 **C-x n w** for *widen*
 
 
-<a id="org53e879d"></a>
+<a id="org52db7b7"></a>
 
 ## save-restriction
 
 
-<a id="orge63a518"></a>
+<a id="org0ca9e3a"></a>
 
 ### use save-restriction and save-excurison
 
@@ -359,12 +368,12 @@ with narrowing, the rest of buffer is invisible
       body))
 
 
-<a id="orgf913786"></a>
+<a id="orga6686ff"></a>
 
 ## what-lines
 
 
-<a id="org8254334"></a>
+<a id="org60285e4"></a>
 
 ### 
 
@@ -378,14 +387,14 @@ with narrowing, the rest of buffer is invisible
     	(message "The line number is %d" lines)))))
 
 
-<a id="org708cba6"></a>
+<a id="org991b46c"></a>
 
 ## more about interactive
 
 Sepreate string with **\n**
 
 
-<a id="orgd3a709d"></a>
+<a id="orgc614122"></a>
 
 ### input many arguments
 
@@ -397,7 +406,7 @@ Sepreate string with **\n**
       (message "name:%s age:%d country:%s" name age country))
 
 
-<a id="orge70c1ed"></a>
+<a id="org8576f66"></a>
 
 ### "r" stands for a region
 
@@ -406,7 +415,7 @@ Sepreate string with **\n**
       (message "start:%d end:%d" start end))
 
 
-<a id="org3804e76"></a>
+<a id="orgf54a4ac"></a>
 
 ### "p" and "P"
 
@@ -421,7 +430,7 @@ invoke a function by typing **C-u prefix-argument M-x fun-name**
           (message "%d" num))
 
 
-<a id="org48c0895"></a>
+<a id="orgfb65c9d"></a>
 
 ## car,cdr and cons
 
@@ -429,7 +438,7 @@ invoke a function by typing **C-u prefix-argument M-x fun-name**
 -   car and cdr to take apart lists
 
 
-<a id="org1bc730b"></a>
+<a id="orgf4c9dee"></a>
 
 ### car
 
@@ -438,7 +447,7 @@ the car of the list is the first item
     (car '(tiger lion))
 
 
-<a id="org65f2ebd"></a>
+<a id="orgf013d74"></a>
 
 ### cdr
 
@@ -448,14 +457,14 @@ returns the rest of the list
     (cdr '(tiger lion cat))
 
 
-<a id="org389c047"></a>
+<a id="org9c1515a"></a>
 
 ### cons
 
     (cons 'tiger '(lion cat))
 
 
-<a id="org7bbe263"></a>
+<a id="org2ddaa2e"></a>
 
 ### nthcdr
 
@@ -466,7 +475,7 @@ use cdr repeatedly
     (nthcdr 3 '(tiger lion cat))
 
 
-<a id="orgb238ca6"></a>
+<a id="org9e379c1"></a>
 
 ### nth
 
@@ -475,7 +484,7 @@ use car repeatedly
     (nth 1 '(lion tiger cat))
 
 
-<a id="orgf72465f"></a>
+<a id="org6a5b55d"></a>
 
 ### setcar
 
@@ -486,7 +495,7 @@ set the **car** a new value
     animals
 
 
-<a id="org759507e"></a>
+<a id="orge70b74c"></a>
 
 ### setcdr
 
@@ -497,12 +506,12 @@ set the **cdr** a new value
     animals
 
 
-<a id="org8f9fa50"></a>
+<a id="orgb911f77"></a>
 
 # Day4
 
 
-<a id="org140785d"></a>
+<a id="org56a1f7a"></a>
 
 ## defvar
 
@@ -514,12 +523,12 @@ set the **cdr** a new value
     num
 
 
-<a id="org110f555"></a>
+<a id="org8b8c713"></a>
 
 ## loops and recursion
 
 
-<a id="org22cd503"></a>
+<a id="org9e82a04"></a>
 
 ### while
 
@@ -531,7 +540,7 @@ set the **cdr** a new value
     (print-list-element animals)nil
 
 
-<a id="org33afd2a"></a>
+<a id="org65ce1e4"></a>
 
 ### increment loop
 
@@ -544,7 +553,7 @@ use counter to stop a loop
        (setq count (+ 1 count))))
 
 
-<a id="orge8b82d3"></a>
+<a id="org426fe5d"></a>
 
 ### dolist and dotimes
 
@@ -570,17 +579,17 @@ use counter to stop a loop
               (message "%d " number)))
 
 
-<a id="orgf2b77db"></a>
+<a id="org093afec"></a>
 
 # Day5
 
 
-<a id="org77bb5c5"></a>
+<a id="org2047417"></a>
 
 ## numbers
 
 
-<a id="org78c61ca"></a>
+<a id="orga06c132"></a>
 
 ### basics
 
@@ -635,7 +644,7 @@ use counter to stop a loop
         (logb 10) 3
 
 
-<a id="orgca14061"></a>
+<a id="org08aa918"></a>
 
 ### type predicates
 
@@ -667,7 +676,7 @@ check if it is a natural number
     (zerop 0)  t
 
 
-<a id="orgcc51307"></a>
+<a id="org7bc06de"></a>
 
 ### comparison of numbers
 
@@ -709,7 +718,7 @@ check if it is a natural number
         (abs -3)
 
 
-<a id="orgf53a16d"></a>
+<a id="org3e28c51"></a>
 
 ### conversion
 
@@ -757,7 +766,7 @@ check if it is a natural number
         (round 1.5)
 
 
-<a id="org56a5661"></a>
+<a id="org886e627"></a>
 
 ### arithmetic operations
 
@@ -810,7 +819,7 @@ check if it is a natural number
         (mod 9 -4)
 
 
-<a id="orge40a332"></a>
+<a id="org7d61be6"></a>
 
 ### float rounding
 
@@ -825,7 +834,7 @@ return the float whose value is nearby integer
 -   fround
 
 
-<a id="org3067c3a"></a>
+<a id="org8fb70ca"></a>
 
 ### bitwise operations
 
@@ -878,7 +887,7 @@ return the float whose value is nearby integer
         (logcount -43)
 
 
-<a id="orgfa01acb"></a>
+<a id="orgf1217a6"></a>
 
 ### mathmatical functions
 
@@ -921,7 +930,7 @@ return x rasied to the power y
     float-pi
 
 
-<a id="org1f660ad"></a>
+<a id="orgbf2e11c"></a>
 
 ### random numbers
 
@@ -933,17 +942,17 @@ return x rasied to the power y
         (random 5)
 
 
-<a id="org0f30cad"></a>
+<a id="org6b2dab5"></a>
 
 # Day6
 
 
-<a id="org8f90037"></a>
+<a id="org2267884"></a>
 
 ## strings and characters
 
 
-<a id="orge613dc1"></a>
+<a id="org9401096"></a>
 
 ### predicates for strings
 
@@ -970,7 +979,7 @@ return x rasied to the power y
         (char-or-string-p "asdf") t
 
 
-<a id="orge5c45b3"></a>
+<a id="org50c5f3d"></a>
 
 ### creating strings
 
@@ -1017,7 +1026,7 @@ return x rasied to the power y
         (split-string "  hello world   ")
 
 
-<a id="org8c96885"></a>
+<a id="org40453db"></a>
 
 ### modifying strings
 
@@ -1042,7 +1051,7 @@ return x rasied to the power y
         (clear-string "asdad") nil
 
 
-<a id="org1b66bd4"></a>
+<a id="org57811a4"></a>
 
 ### comparison of character and strings
 
@@ -1120,7 +1129,7 @@ If case-fold-search is non-nil,this function ignores differences in case
         (string-distance "asdf" "asd")  1
 
 
-<a id="org3e37097"></a>
+<a id="orgbbac5d6"></a>
 
 ### conversion of characters and strings
 
@@ -1264,5 +1273,428 @@ If case-fold-search is non-nil,this function ignores differences in case
     
         (format-message "'asdf'")  'asdf'
 
-7.  
+
+<a id="org5a57f31"></a>
+
+# Day7
+
+
+<a id="orgb7d230e"></a>
+
+## regular expressions
+
+
+<a id="org76ec07d"></a>
+
+### special characters
+
+-   '.'
+
+It matches any single character except a newline
+
+-   '\*'
+
+It is a postfix operator that matches preceding expression repetitively as many times as possible.
+
+-   '+'
+
+It is a postfix operator that matches preceding expression at least once.
+
+-   '?'
+
+It is a postfix operator that matches preceding expression either once or not at all.
+
+-   '\*?','+?','??'
+
+It matches the smallest substring.
+
+-   '[&#x2026;]'
+
+It is a character alternative.
+The characters between the brackets are what this character alternative can match.
+'c[ad]\*r' matches "cadr","car","cr" etc.
+
+-   '[^&#x2026;]'
+
+It matches any character except the specified ones
+
+-   '^'
+
+It matches the empty string,but only on the beginning of the line.
+
+-   '$'
+
+It is similiar to the '^',but on the end of the line.
+
+-   '\\'
+
+It quotes the special characters(including '\\') and introduces additional special constructs.
+
+
+<a id="org1487fea"></a>
+
+### character classes
+
+-   '[:ascii:]'
+
+This matches any ASCII character.
+
+-   '[:alnum:]'
+
+This matches any letter or digit.
+
+-   '[:digit:]'
+
+This matches '0' through '9'.
+
+-   '[:lower:]'
+
+This matches any lower-case letter.
+If case-fold-search is non-nil,it also matches any upper-case letter.
+
+-   '[:upper:]'
+
+It is similiar with '[:upper:]'.
+
+-   '[:nonascii:]'
+
+It matches any non-ASCII character.
+
+-   '[:xdigit:]'
+
+It matches any hexadecimal digits.
+
+-   '[:punct:]'
+
+It matches any punctuation character.
+
+    "[[:ascii:]]"
+
+
+<a id="org8fa7fd5"></a>
+
+### backslash constructs
+
+-   '\\|'
+
+'a\\|b' matches either "a" or "b" but on other string.
+
+-   '\\{m\\}'
+
+It is a postfix operator that repeats the previous pattern exactly m times.
+
+    'x\{5\}' matches 'xxxxx'
+
+-   '\\{m,n\\}'
+
+It is a postfix operator that repeats the previous pattern with a minimum of m and a maximum of n.
+If m is omitted,the minimun is 0.
+If n is omitted,there is no maximum.
+
+-   '\(...\)'
+-   To enclose the set of '\\|' alternatives
+
+    '\(bar\|foo\)x'
+    it matches either 'barx' or 'foox'
+
+1.  To enclose a complicated expression for the postfix operatores '\*','+' or '?'
+
+    'ba\(na\)*'
+    it matches 'ba','bana','banana' and so on
+
+
+<a id="orgfe38c34"></a>
+
+# Day8
+
+
+<a id="orgbaab0e2"></a>
+
+## strings and characters
+
+
+<a id="org632d6dd"></a>
+
+### case conversion
+
+1.  downcase
+
+        (downcase string-or-char)
+    
+        (downcase ?Z)     z/122
+    
+        (downcase "WQER")   "wqer"
+
+2.  upcase
+
+        (upcase string-or-char)
+    
+        (upcase ?z)    Z/90
+    
+        (upcase "asdf")   "ASDF"
+
+3.  capitalize
+
+    This function capitalize the string or char.
+    That means the first letter of every word converted to the upcase,
+    and the rest of the word converted to the downcase.
+    
+        (capitalize string-or-char)
+    
+        (capitalize ?z) Z
+    
+        (capitalize "this is an apple") "This Is An Apple"
+    
+        (capitalize "thIS is AN APPLe") This Is An Apple
+
+4.  upcase-initials
+
+    It cpnverts the initials of ever word to the upcase,without any change to the rest of every word.
+    
+        (upcase-initials string-or-char)
+    
+        (upcase-initials "THIS iS an apple.") THIS IS An Apple.
+
+
+<a id="org0aec2da"></a>
+
+### lists
+
+1.  the different lists
+
+    1.  proper lists
+    
+        The cdr of the last cons cell in a list is 'nil'.
+    
+    2.  circular lists
+    
+    3.  dotted lists
+    
+        The cdr of the last cons cell in a list is come value other than 'nil'.
+
+2.  predicates on lists
+
+    1.  consp
+    
+        It return t if object is a cons cell.     
+        
+            (consp object)
+        
+            (consp '(rose cat))      t
+        
+            (consp (cons 'cat 1))  t
+        
+            (consp '(rose cat dog))            t
+            (consp (list 'rose 'cat 'dog))     t
+            (consp ())                         nil
+    
+    2.  listp
+    
+        It returns t if the object is a cons cell or nil.
+        
+            (listp (cons 1 2))   t
+            (listp ())           t
+    
+    3.  nlistp
+    
+        It retuns t if the object is not a list.
+        
+            (nlistp 3)        t
+    
+    4.  null
+    
+        It returns t  if the object is nil.
+        
+            (null ())         t
+            (null '())        t
+    
+    5.  proper-list-p
+    
+        It returns the length of the list,if it is a proper list.
+        Else it returns nil.
+        
+            (proper-list-p '(1 2 34 4))       4
+            (proper-list-p '(1 2 . 3))        nil
+    
+    6.  atom
+    
+        It returns t if the object is an atom.
+        All objects except cons cell are atoms.
+        
+            (atom '(1 23 3))    nil
+            (atom "asd")        t
+            (atom 1)            t
+
+3.  accessing elements of lists
+
+    1.  car
+    
+        It returns the first slot of the cons cell.
+        
+            (car cons-cell)
+        
+            (car '(1 2 3 4))    1
+    
+    2.  cdr
+    
+        It returns the second slot of the cons cell.
+        
+            (cdr cons-cell)
+        
+            (cdr '( 1 2 3))    (2 3)
+    
+    3.  car-safe
+    
+        It lets you take the car of the object  while avoiding errors for other types.
+        
+            (car-safe object)
+        
+            (car-safe 1)    return nil and no response of error
+            (car-safe '(1 2 3))    1
+    
+    4.  cdr-safe
+    
+        It is similiar to the car-safe.
+    
+    5.  pop
+    
+        It returns the car of the list,and saves the cdr of the list to the listname.
+        destructive function
+        
+            (pop listname)
+        
+            (setq animals '(rose dog cat))  (rose dog car)
+            (pop animals)                    "rose"
+            animals                          (dog cat)
+    
+    6.  nth
+    
+        It returns the nth elsement of the list.
+        If the length of the list is n or less,it returns nil.
+        
+            (nth n list)
+        
+            (nth 2 '(1 2 3 4))       3
+    
+    7.  nthcdr
+    
+        It returns the nth cdr of the list.
+        if n is 0,it returns the list.
+        If the length is  or less,it returns nil.
+        
+            (nthcdr n list)
+        
+            (nthcdr 2 '(1 2 3))     (3)
+            (nthcdr 0 '(1 2 3))     (1 2 3)
+            (nthcdr 3 '( 1 2 3))    nil
+    
+    8.  last
+    
+        It returns the last link of the list.
+        If n is "non-nil", it returns the nth-to-last link.
+        
+            (last list &optional n)
+        
+            (last '(1 2 3))        (3)
+            (last '(1 2 3) 2)      (2 3)
+            (last '(1 2 3) 4)      (1 2 3)
+    
+    9.  safe-length
+    
+        It returns the length of the object while avoiding errors of other types.
+        It returns 0,if the object is not nil or a cons cell.
+        
+            (safe-length 1)           0
+            (safe-length '( 1 2 3))   3
+    
+    10. caar,cddr,cadr
+    
+            (cadr '(1 2 3))        2
+            (car (cdr '(1 2 3)))   2
+    
+    11. butlast
+    
+        It returns the list without the last element
+        If n is greater than 0,it makes a copy of the list so as not to damage the original list.
+        
+            (butlast x &optional n)
+        
+            (setq animals '(cat dog rose))     (cat dog rose)
+            (butlast animals)                 (cat dog)
+            animals                          (cat dog rose lily)
+            (setq animals '(cat dog rose lily)) (cat dog rose lily)
+            (butlast animals 2)                 (cat dog)
+            animals                             (cat dog rose lily)
+        
+            (butlast '(1 2 3))         (1 2)
+            (butlast '(1 2 3 4 5) 2)   (1 2 3)
+    
+    12. nbutlast
+    
+        This is version of butlast by destructively modifying the list.
+        
+            (setq animals '(cat dog rose lily)) (cat dog rose lily)
+            (nbutlast animals 2)                 (cat dog)
+            animals                             (cat dog)
+
+4.  building cons cells and lists
+
+    1.  cons
+    
+            (cons object1 object2)
+        
+            (cons 1 2)   (1 . 2)
+            (cons 1 '(2)) (1 2)
+    
+    2.  list
+    
+            (list &rest objects)
+        
+            (list 1 2 3 4 5 ) (1 2 3 4 5)
+    
+    3.  make-list
+    
+            (make-list length object)
+        
+            (make-list 3 'x)    (x x x)
+    
+    4.  append
+    
+        It is not a destructive function.
+        
+            (append &rest sequences)
+        
+            (setq list '(1 2 3))         (1 2 3)
+            (append list '(4 5))         (1 2 3 4 5)
+            list                         (1 2 3)
+    
+    5.  copy-tree
+    
+        It returns a copy of the tree.
+        It the vecp is non-nil,it also copies the vector.
+        
+            (copy-tree tree &optional vecp)
+        
+            (copy-tree '(1 2 3))     (1 2 3)
+    
+    6.  flatten-tree
+    
+        It returns a tree with the elements in the same order.
+        
+            (flatten-tree tree)
+        
+            (flatten-tree '(1 2 3 (4 5) (6 (7 . 8))))        (1 2 3 4 5 6 7 8)
+    
+    7.  number-sequence
+    
+        It returns a sequence of numbers starting at the **from**,increasing by the **separation** and ending at pr before **to**.
+        default separation is 1.
+        
+            (number-sequence from &optional to separation)
+        
+            (number-sequence 1 4)  (1 2 3 4)    
+            (number-sequence 4 1 -1) (4 3 2 1)
+            (number-sequence 1 6 2)  (1 3 5)
+    
+    8.  modifying list variabels
 
