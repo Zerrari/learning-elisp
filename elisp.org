@@ -1821,6 +1821,7 @@ it matches either 'barx' or 'foox'
 it matches 'ba','bana','banana' and so on
 #+end_src
 
+
 * Day8
 ** strings and characters
 *** case conversion
@@ -2159,5 +2160,122 @@ default separation is 1.
 (number-sequence 1 6 2)  (1 3 5)
 #+end_src
 ***** modifying list variabels
+**** modifying list variables
+***** push
+#+begin_src emacs-lisp
+(push element listname)
+#+end_src
 
+#+begin_src emacs-lisp
+(setq animals '(cat dog))   (cat dog)
+(push 'lion animals)         (lion cat dog)
+animals                     (lion cat dog)
+#+end_src
+***** add-to-list
++ It sets variable symbol by consing element onto the old value.
++ If the element is not the value of the list,it will be added.
++ If the compare-fn is nil,it use *equal* to compare.
++ if the append is non-nil,the element will be added at the end of the list.
+#+begin_src emacs-lisp
+(add-to-list symbol element &optional append comapre-fn)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq list '(1 2 3 4)) (1 2 3 4)
+(add-to-list 'list 1)  (1 2 3 4)
+(add-to-list 'list 5 nil) (1 2 3 4 5)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq list '(1 2 3 4))
+(add-to-list 'list 5)  (5 1 2 3 4)
+#+end_src
+***** add-to-ordered-list
+
+#+begin_src emacs-lisp
+(add-to-ordered-list symbol element &optional order)
+#+end_src
+
+#+begin_src emacs-lisp
+(add-to-ordered-list)
+#+end_src
+
+**** modifying existing list structure
+***** setcar
+It returns value object.
+#+begin_src emacs-lisp
+(setcar cons object)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq list '(1 2 3))    (1 2 3)
+(setcar list 5)         5
+list                    (5 2 3) 
+#+end_src
+***** setcdr
+It returns the value object.
+#+begin_src emacs-lisp
+(setcdr cons object)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq list '(1 2 3 4))  (1 2 3 4)
+(setcdr list 5)         5
+list                    (1 . 5) 
+#+end_src
+***** nconc
+It return a list containing all elements in the lists.
+#+begin_src emacs-lisp
+(nconc &rest lists)
+#+end_src
+
+#+begin_src emacs-lisp
+(nconc '(1 2 3) '(4 5))     (1 2 3 4 5)
+#+end_src
+**** using lists as sets
+***** memq
++ It tests if the object is a member of a list.
++ If so,it returns the list starting with the first occurrence of object.
++ If not,it returns nil.
+#+begin_src emacs-lisp
+(memq object list)
+#+end_src
+
+#+begin_src emacs-lisp
+(memq 'a '(q w e t a s d))   (a s d)
+#+end_src
+***** delq
++ It removes the elements equaling the object.
++ It returns the resulting list.
+#+begin_src emacs-lisp
+(delq object list)
+#+end_src
+
+#+begin_src emacs-lisp
+(delq 'a '(a d f a))    (d f)
+(delq 'a '(q w e r))    (q w e r) 
+#+end_src
+***** remq
++ It returns a copy of list
+#+begin_src emacs-lisp
+(remq object list)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq list '(1 2 3 4))   (1 2 3 4)
+(remq 1 list)            (2 3 4)
+list                     (1 2 3 4)
+#+end_src
+***** memql
++ It tests if the object is a member of the list.
++ Comparing with *eql*.
++ It returns similair to *memq*.
+#+begin_src emacs-lisp
+(memql object list)
+#+end_src
+
+#+begin_src emacs-lisp
+(memql 1 '(1.0 2 3))     nil
+(memql 1 '(1 2 3))       (1 2 3)
+#+end_src
 
