@@ -1902,16 +1902,16 @@ It cpnverts the initials of ever word to the upcase,without any change to the re
 #+RESULTS:
 : THIS IS An Apple.
 
-*** lists
-**** the different lists
-***** proper lists
+** lists
+*** the different lists
+**** proper lists
 The cdr of the last cons cell in a list is 'nil'.
-***** circular lists
-***** dotted lists
+**** circular lists
+**** dotted lists
 The cdr of the last cons cell in a list is come value other than 'nil'.
 
-**** predicates on lists
-***** consp
+*** predicates on lists
+**** consp
 It return t if object is a cons cell.     
 #+begin_src emacs-lisp
 (consp object)
@@ -1939,31 +1939,31 @@ It return t if object is a cons cell.
 
 #+RESULTS:
 : t
-***** listp
+**** listp
 It returns t if the object is a cons cell or nil.
 #+begin_src emacs-lisp
 (listp (cons 1 2))   t
 (listp ())           t
 #+end_src
-***** nlistp
+**** nlistp
 It retuns t if the object is not a list.
 #+begin_src emacs-lisp
 (nlistp 3)        t
 #+end_src
-***** null
+**** null
 It returns t  if the object is nil.
 #+begin_src emacs-lisp
 (null ())         t
 (null '())        t
 #+end_src
-***** proper-list-p
+**** proper-list-p
 It returns the length of the list,if it is a proper list.
 Else it returns nil.
 #+begin_src emacs-lisp
 (proper-list-p '(1 2 34 4))       4
 (proper-list-p '(1 2 . 3))        nil
 #+end_src
-***** atom
+**** atom
 It returns t if the object is an atom.
 All objects except cons cell are atoms.
 #+begin_src emacs-lisp
@@ -1971,8 +1971,8 @@ All objects except cons cell are atoms.
 (atom "asd")        t
 (atom 1)            t
 #+end_src
-**** accessing elements of lists
-***** car
+*** accessing elements of lists
+**** car
 It returns the first slot of the cons cell.
 #+begin_src emacs-lisp
 (car cons-cell)
@@ -1981,7 +1981,7 @@ It returns the first slot of the cons cell.
 #+begin_src emacs-lisp
 (car '(1 2 3 4))    1
 #+end_src
-***** cdr
+**** cdr
 It returns the second slot of the cons cell.
 #+begin_src emacs-lisp
 (cdr cons-cell)
@@ -1990,7 +1990,7 @@ It returns the second slot of the cons cell.
 #+begin_src emacs-lisp
 (cdr '( 1 2 3))    (2 3)
 #+end_src
-***** car-safe
+**** car-safe
 It lets you take the car of the object  while avoiding errors for other types.
 #+begin_src emacs-lisp
 (car-safe object)
@@ -2000,9 +2000,9 @@ It lets you take the car of the object  while avoiding errors for other types.
 (car-safe 1)    return nil and no response of error
 (car-safe '(1 2 3))    1
 #+end_src
-***** cdr-safe
+**** cdr-safe
 It is similiar to the car-safe.
-***** pop
+**** pop
 It returns the car of the list,and saves the cdr of the list to the listname.
 destructive function
 #+begin_src emacs-lisp
@@ -2014,7 +2014,7 @@ destructive function
 (pop animals)                    "rose"
 animals                          (dog cat)
 #+end_src
-***** nth
+**** nth
 It returns the nth elsement of the list.
 If the length of the list is n or less,it returns nil.
 #+begin_src emacs-lisp
@@ -2024,7 +2024,7 @@ If the length of the list is n or less,it returns nil.
 #+begin_src emacs-lisp
 (nth 2 '(1 2 3 4))       3
 #+end_src
-***** nthcdr
+**** nthcdr
 It returns the nth cdr of the list.
 if n is 0,it returns the list.
 If the length is  or less,it returns nil.
@@ -2037,7 +2037,7 @@ If the length is  or less,it returns nil.
 (nthcdr 0 '(1 2 3))     (1 2 3)
 (nthcdr 3 '( 1 2 3))    nil
 #+end_src
-***** last
+**** last
 It returns the last link of the list.
 If n is "non-nil", it returns the nth-to-last link.
 #+begin_src emacs-lisp
@@ -2049,7 +2049,7 @@ If n is "non-nil", it returns the nth-to-last link.
 (last '(1 2 3) 2)      (2 3)
 (last '(1 2 3) 4)      (1 2 3)
 #+end_src
-***** safe-length
+**** safe-length
 It returns the length of the object while avoiding errors of other types.
 It returns 0,if the object is not nil or a cons cell.
 #+begin_src emacs-lisp
@@ -2057,12 +2057,12 @@ It returns 0,if the object is not nil or a cons cell.
 (safe-length '( 1 2 3))   3
 
 #+end_src
-***** caar,cddr,cadr
+**** caar,cddr,cadr
 #+begin_src emacs-lisp
 (cadr '(1 2 3))        2
 (car (cdr '(1 2 3)))   2
 #+end_src
-***** butlast
+**** butlast
 It returns the list without the last element
 If n is greater than 0,it makes a copy of the list so as not to damage the original list.
 
@@ -2083,15 +2083,15 @@ animals                             (cat dog rose lily)
 (butlast '(1 2 3))         (1 2)
 (butlast '(1 2 3 4 5) 2)   (1 2 3)
 #+end_src
-***** nbutlast
+**** nbutlast
 This is version of butlast by destructively modifying the list.
 #+begin_src emacs-lisp
 (setq animals '(cat dog rose lily)) (cat dog rose lily)
 (nbutlast animals 2)                 (cat dog)
 animals                             (cat dog)
 #+end_src
-**** building cons cells and lists
-***** cons
+*** building cons cells and lists
+**** cons
 #+begin_src emacs-lisp
 (cons object1 object2)
 #+end_src
@@ -2100,7 +2100,7 @@ animals                             (cat dog)
 (cons 1 2)   (1 . 2)
 (cons 1 '(2)) (1 2)
 #+end_src
-***** list
+**** list
 #+begin_src emacs-lisp
 (list &rest objects)
 #+end_src
@@ -2108,7 +2108,7 @@ animals                             (cat dog)
 #+begin_src emacs-lisp
 (list 1 2 3 4 5 ) (1 2 3 4 5)
 #+end_src
-***** make-list
+**** make-list
 #+begin_src emacs-lisp
 (make-list length object)
 #+end_src
@@ -2116,7 +2116,7 @@ animals                             (cat dog)
 #+begin_src emacs-lisp
 (make-list 3 'x)    (x x x)
 #+end_src
-***** append
+**** append
 It is not a destructive function.
 #+begin_src emacs-lisp
 (append &rest sequences)
@@ -2127,7 +2127,7 @@ It is not a destructive function.
 (append list '(4 5))         (1 2 3 4 5)
 list                         (1 2 3)
 #+end_src
-***** copy-tree
+**** copy-tree
 It returns a copy of the tree.
 It the vecp is non-nil,it also copies the vector.
 
@@ -2138,7 +2138,7 @@ It the vecp is non-nil,it also copies the vector.
 #+begin_src emacs-lisp
 (copy-tree '(1 2 3))     (1 2 3)
 #+end_src
-***** flatten-tree
+**** flatten-tree
 It returns a tree with the elements in the same order.
 #+begin_src emacs-lisp
 (flatten-tree tree)
@@ -2147,7 +2147,7 @@ It returns a tree with the elements in the same order.
 #+begin_src emacs-lisp
 (flatten-tree '(1 2 3 (4 5) (6 (7 . 8))))        (1 2 3 4 5 6 7 8)
 #+end_src
-***** number-sequence
+**** number-sequence
 It returns a sequence of numbers starting at the *from*,increasing by the *separation* and ending at pr before *to*.
 default separation is 1.
 #+begin_src emacs-lisp
@@ -2159,9 +2159,9 @@ default separation is 1.
 (number-sequence 4 1 -1) (4 3 2 1)
 (number-sequence 1 6 2)  (1 3 5)
 #+end_src
-***** modifying list variabels
-**** modifying list variables
-***** push
+**** modifying list variabels
+*** modifying list variables
+**** push
 #+begin_src emacs-lisp
 (push element listname)
 #+end_src
@@ -2171,7 +2171,7 @@ default separation is 1.
 (push 'lion animals)         (lion cat dog)
 animals                     (lion cat dog)
 #+end_src
-***** add-to-list
+**** add-to-list
 + It sets variable symbol by consing element onto the old value.
 + If the element is not the value of the list,it will be added.
 + If the compare-fn is nil,it use *equal* to compare.
@@ -2190,7 +2190,7 @@ animals                     (lion cat dog)
 (setq list '(1 2 3 4))
 (add-to-list 'list 5)  (5 1 2 3 4)
 #+end_src
-***** add-to-ordered-list
+**** add-to-ordered-list
 
 #+begin_src emacs-lisp
 (add-to-ordered-list symbol element &optional order)
@@ -2200,8 +2200,8 @@ animals                     (lion cat dog)
 (add-to-ordered-list)
 #+end_src
 
-**** modifying existing list structure
-***** setcar
+*** modifying existing list structure
+**** setcar
 It returns value object.
 #+begin_src emacs-lisp
 (setcar cons object)
@@ -2212,7 +2212,7 @@ It returns value object.
 (setcar list 5)         5
 list                    (5 2 3) 
 #+end_src
-***** setcdr
+**** setcdr
 It returns the value object.
 #+begin_src emacs-lisp
 (setcdr cons object)
@@ -2223,7 +2223,7 @@ It returns the value object.
 (setcdr list 5)         5
 list                    (1 . 5) 
 #+end_src
-***** nconc
+**** nconc
 It return a list containing all elements in the lists.
 #+begin_src emacs-lisp
 (nconc &rest lists)
@@ -2232,8 +2232,8 @@ It return a list containing all elements in the lists.
 #+begin_src emacs-lisp
 (nconc '(1 2 3) '(4 5))     (1 2 3 4 5)
 #+end_src
-**** using lists as sets
-***** memq
+*** using lists as sets
+**** memq
 + It tests if the object is a member of a list.
 + If so,it returns the list starting with the first occurrence of object.
 + If not,it returns nil.
@@ -2244,7 +2244,7 @@ It return a list containing all elements in the lists.
 #+begin_src emacs-lisp
 (memq 'a '(q w e t a s d))   (a s d)
 #+end_src
-***** delq
+**** delq
 + It removes the elements equaling the object.
 + It returns the resulting list.
 #+begin_src emacs-lisp
@@ -2252,10 +2252,18 @@ It return a list containing all elements in the lists.
 #+end_src
 
 #+begin_src emacs-lisp
+(setq list '(1 2 3 4))   (1 2 3 4)
+(delq 1 list)            (2 3 4)
+list                     (1 2 3 4)
+(delq 2 list)            (1 3 4)
+list                     (1 3 4) 
+#+end_src
+
+#+begin_src emacs-lisp
 (delq 'a '(a d f a))    (d f)
 (delq 'a '(q w e r))    (q w e r) 
 #+end_src
-***** remq
+**** remq
 + It returns a copy of list
 #+begin_src emacs-lisp
 (remq object list)
@@ -2266,7 +2274,7 @@ It return a list containing all elements in the lists.
 (remq 1 list)            (2 3 4)
 list                     (1 2 3 4)
 #+end_src
-***** memql
+**** memql
 + It tests if the object is a member of the list.
 + Comparing with *eql*.
 + It returns similair to *memq*.
@@ -2278,4 +2286,315 @@ list                     (1 2 3 4)
 (memql 1 '(1.0 2 3))     nil
 (memql 1 '(1 2 3))       (1 2 3)
 #+end_src
+
+
+* Day9
+** lists
+*** using lists as sets
+**** member
+It tests if the object is a member of the list,comparing with *equal*.
+#+begin_src emacs-lisp
+(member object list)
+#+end_src
+
+#+begin_src emacs-lisp
+(member 2 '(1 2 3))      (2 3)
+#+end_src
+
+#+begin_src emacs-lisp
+(member "foo" '("foo" "qwer"))     ("foo" "qwer")
+#+end_src
+**** delete
+#+begin_src emacs-lisp
+(delete object sequence)
+#+end_src
+
+#+begin_src emacs-lisp
+(delete 1 '(1 2 3))   (2 3)
+#+end_src
+**** remove
+It is the non-destructive version of *delete*.
+#+begin_src emacs-lisp
+(remove object sequence)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq list '(1 2 3 4))    (1 2 3 4)
+(remove 3 list)           (1 2 4)
+list                      (1 2 3 4) 
+#+end_src
+*** association lists (alist for short)
++ It records a mapping from key to value.
++ It is a list of cons cells.
++ The car of the cons cell is called *key*.
++ The cdr of the cons cell is called *value*.
+#+begin_src emacs-lisp
+((pine . cones)
+ (oak . acorns))
+#+end_src
+**** assoc
++ It returns the first association for key in alist.
++ If testfn is nil,it is regarded as *equal*.
+#+begin_src emacs-lisp
+(assoc key alist &optional testfn)
+#+end_src
+
+#+begin_src emacs-lisp
+(assoc 'rose '((rose . red) (lily . white)))    (rose . red)
+#+end_src
+
+#+RESULTS:
+: (rose . red)
+**** rassoc
++ It returns the first association with value in alist.
+#+begin_src emacs-lisp
+(rassoc value alist)
+#+end_src
+
+#+begin_src emacs-lisp
+(rassoc 'red '((rose . red) (lily . white)))     (rose . red)
+#+end_src
+**** assq
++ It is like *assoc*,but it compares with *eq*.
+#+begin_src emacs-lisp
+(assq key alist)
+#+end_src
+
+#+begin_src emacs-lisp
+(assq 'rose '((rose . red) (lily . white)))    (rose . red)
+#+end_src
+**** alist-get
++ If the association isn't found,it returns default.
++ If *remove* is non-nil,it remove the key's association when the new value is *eql* to *default*. 
+#+begin_src emacs-lisp
+(alist-get key alist &optional default remove testfn)
+#+end_src
+
+#+begin_src emacs-lisp
+(alist-get 'rose '((rose . red) (lily white)))         red          
+#+end_src
+
+#+begin_src emacs-lisp
+(alist-get 'cat '((rose . red) (lily white)) 'dog) dog
+#+end_src
+
+#+begin_src emacs-lisp
+(setq alist '((rose . red) (lily . white)))
+(alist-get 'rse alist 'rose 1)
+alist
+#+end_src
+**** rassq
++ It returns the first association with value in alist
+#+begin_src emacs-lisp
+(rassq value alist)
+#+end_src
+
+#+begin_src emacs-lisp
+(rassq 'red '((rose . red) (lily white)))    (rose . red)
+#+end_src
+**** assoc-default
+
+#+begin_src emacs-lisp
+(assoc-default key alist &optional test default)
+#+end_src
+**** copy-alist
++ It creates a new copy of alist
+#+begin_src emacs-lisp
+(copy-alist alist)
+#+end_src
+
+#+begin_src emacs-lisp
+(copy-alist '((rose . red) (lily . white)))        ((rose . red) (lily . white))
+#+end_src
+**** assq-delete-all
++ It deletes all the association whose car is equal to key.
++ For correct results,use return value of *assq-delete-all*
+#+begin_src emacs-lisp
+(assq-delete-all key alist)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq alist '((foo . 1) (qwer . 2) (foo . 3)))      ((foo . 1) (qwer . 2) (foo . 3))
+(assq-delete-all 'foo alist)    ((qwer . 2))
+alist                           ((foo . 1) (qwer . 2))
+#+end_src
+**** rassq-delete-all
++ It deletes all the association whose cdr is equal to value.
++ It is similiar to *assq-delete-all*
+#+begin_src emacs-lisp
+(rassq-delete-all value alist)
+#+end_src
+**** let-alist
++ Creates a binding for each symbol used as keys the association list alist, prefixed with dot. 
+#+begin_src emacs-lisp
+(let-alist alist body)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq alist '((rose . red) (lily white)))             ((rose . red) (lily . white))
+(let-alist alist (if (eq .rose 'red) .lily))          (white)
+#+end_src
+*** property lists (plist for short)
++ It is a list of paired elements
+#+begin_src emacs-lisp
+(pine cones number (1 2 3) color "blue")
+#+end_src
+**** plist-get
+#+begin_src emacs-lisp
+(plist-get plist property)
+#+end_src
+
+#+begin_src emacs-lisp
+(plist-get '(foo 4) 'foo)             4
+(plist-get '(foo 4 qwer) 'qwer)       nil
+#+end_src
+**** plist-put
++ For correct results,it is better to use the return value of *plist-put*.
+#+begin_src emacs-lisp
+(plist-put plist property value)
+#+end_src
+
+#+begin_src emacs-lisp
+(plist-put '(foo 1 qwe 2) 'asd 3)       (foo 1 qwe 2 asd 3)
+#+end_src
+**** lax-plist-get
++ Like *plist-get*,but it compares with *equal*.
+**** lax-plist-put
++ Like *plist-put*,but it compares with *equal*.
+**** plist-member
++ It can distinguish between the missing property and a property with the value *nil*.
+#+begin_src emacs-lisp
+(plist-member plist property)
+#+end_src
+** sequences,arrays and vectors
+   | sequence               |
+   | list     | array      |
+   |          | vector     |
+   |          | string     |
+   |          | char-table |
+   |          | bool-table |
+   |          |            |
+*** sequences
+**** sequencep / seqp
++ It returns *t*,if the object is sequence.
+#+begin_src emacs-lisp
+(sequencep object)
+#+end_src
+
+#+begin_src emacs-lisp
+(seqp '(1 2 3))      t
+(seqp [1 2 3 4])     t
+(seqp "qwer")        t
+#+end_src
+**** length
+#+begin_src emacs-lisp
+(length object)
+#+end_src
+
+#+begin_src emacs-lisp
+(length '( 1 2 3)) 3
+(length "string")  6
+(length [1 2 3 (1 2 3)]) 4
+#+end_src
+**** elt
+#+begin_src emacs-lisp
+(elt sequence index)
+#+end_src
+
+#+begin_src emacs-lisp
+(elt '(1 2 3) 0)   1
+(elt "string" 3)   'i' 
+#+end_src
+**** copy-sequence
+#+begin_src emacs-lisp
+(copy-sequence seqr)
+#+end_src
+
+#+begin_src emacs-lisp
+(copy-sequence '(1 2 3))      (1 2 3)
+#+end_src
+**** reverse
++ It creates a new sequence.
++ Original sequence isn't be reversed.
++ Char-tables cannot be reversed.
+#+begin_src emacs-lisp
+(reverse sequence)
+#+end_src
+
+#+begin_src emacs-lisp
+(reverse '(1 2 3))      (3 2 1)
+(setq list '(1 2 3))    (1 2 3) 
+(reverse list)          (3 2 1)
+list                    (1 2 3)
+#+end_src
+
+#+begin_src emacs-lisp
+(reverse "string")     "gnitrs"
+#+end_src
+**** nreverse
++ The original sequence may be modified.
++ It doesn't work with *strings*.
+#+begin_src emacs-lisp
+(nreverse sequence)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq list '(1 2 3))    (1 2 3) 
+(nreverse list)         (3 2 1)
+list                    (1) 
+#+end_src
+**** sort
++ It may be used only for lists and vectors.
++ Its argument *predicate* must be a function accepting two arguments.
+#+begin_src emacs-lisp
+(sort sequence predicate)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq nums '( 2 4 3 1 6 5 0)) (2 4 3 1 6 5 0)
+(sort nums #'<)               (0 1 2 3 4 5 6)
+nums                          (2 3 4 5 6)
+#+end_src
+**** seq-elt
+#+begin_src emacs-lisp
+(seq-elt sequence index)
+#+end_src
+
+#+begin_src emacs-lisp
+(seq-elt '(1 2 3 4 5) 2)        3
+#+end_src
+**** seq-length
++ It returns the number of elements.
+#+begin_src emacs-lisp
+(seq-length '(1 2 3 4))     4
+(seq-length [1 2 3 (1 2)])  4
+(seq-length "string")       6
+#+end_src
+**** seq-drop
++ It returns all but the first n elements of sequence.
++ If n is negative or zero,it returns the full sequence.
+#+begin_src emacs-lisp
+(seq-drop sequence n)
+#+end_src
+
+#+begin_src emacs-lisp
+(seq-drop '(1 2 3 4 5) 3)   (4 5)
+(seq-drop "string" 3)       "ing"
+#+end_src
+**** seq-take
++ It returns the first n element of sequence.
++ If n is negative or zero,it returns *nil*.
+#+begin_src emacs-lisp
+(seq-take sequence n)
+#+end_src
+
+#+begin_src emacs-lisp
+(seq-take '(1 2 3 4 5 6) 2)   (1 2)
+#+end_src
+**** seq-take-while
+#+begin_src emacs-lisp
+(seq-take-while predicate sequence)
+#+end_src
+**** seq-drop-while
+
 
